@@ -66,3 +66,36 @@ App.post('/contas', (req, res) => {
 //Update Conta
 
 /* ---------- FIM CONTA ---------- */
+
+/* ---------- FIM CATEGORIA ---------- */
+const Categoria = require('./models/categoria')
+App.get('/categorias', (req, res) => {
+    Categoria.find().sort({ createdAt: -1 })
+        .then((result) => {
+            res.render('categoria/index', { categorias: result })
+        }).catch((err) => console.log(err))
+    
+})
+
+App.get('/categorias/new', (req, res) => {
+    res.render('categoria/form_cadastro_categoria')
+})
+
+App.get('/categorias/:id', (req, res) => {
+    const id = req.params.id
+    Categoria.findById(id).sort({ createdAt: -1 })
+        .then((result) => {
+            res.render('categoria/details', { categoria : result })
+        }).catch((err) => console.log(err))
+})
+
+//Post Categoria
+App.post('/categorias', (req, res) => {
+    const categoria = new Categoria(req.body)
+    categoria.save().then((result) => {
+        res.redirect('/categorias')
+    }).catch((err) => {
+        console.log(err)
+    })
+})
+/* ---------- FIM CATEGORIA ---------- */
