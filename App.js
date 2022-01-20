@@ -24,19 +24,18 @@ App.set('view engine', 'ejs')
 App.listen(port)
 App.use(express.urlencoded({extended:true}))
 
-/* Setting The Request Handlers */
+/* ---------- LOGIN ---------- */
+App.get('/', (req, res) => {
+    res.render('sign/index')
+})
+
+App.get('/new', (req, res) => {
+    res.render('sign/form_cadastro_conta')
+})
+/* ---------- FIM LOGIN ---------- */
 
 /* ---------- CONTA ---------- */
-
-//Get Conta
 const Conta = require('./models/conta')
-App.get('/', (req, res) => {
-    res.render('conta/index')
-})
-
-App.get('/contas/new', (req, res) => {
-    res.render('conta/form_cadastro_conta')
-})
 
 App.get('/contas', (req, res) => {
     Conta.find().sort({ createdAt: -1 })
@@ -116,6 +115,8 @@ App.put('/categorias/:id',(req, res)=>{
 
 /* ---------- FIM CATEGORIA ---------- */
 /* ---------- AGENDA ---------- */
+const Agenda = require('./models/agenda')
+
 App.post('/agendas',(req, res)=>{
 
 })
@@ -136,6 +137,8 @@ App.put('/agendas/:id',(req, res)=>{
 
 
 /* ---------- CLIENTE ---------- */
+const Cliente = require('./models/cliente')
+
 App.post('/clientes',(req, res)=>{
 
 })
@@ -159,6 +162,8 @@ App.put('/categorias/:id',(req, res)=>{
 /* ---------- FIM CLIENTE ---------- */
 
 /* ---------- CONTACTO ---------- */
+const Contacto = require('./models/contacto')
+
 App.post('/contactos',(req, res)=>{
 
 })
@@ -190,6 +195,8 @@ App.put('/contactos/:id',(req, res)=>{
 /* ---------- FIM CONTACTO ---------- */
 
 /* ---------- ENDERECO ---------- */
+const Endeereco = require('./models/endereco')
+
 App.post('/enderecos',(req, res)=>{
 
 })
@@ -221,6 +228,8 @@ App.put('/enderecos/:id',(req, res)=>{
 /* ---------- FIM ENDERECO ---------- */
 
 /* ---------- STAFF ---------- */
+const Staff = require('./models/staff')
+
 App.post('/staff',(req, res)=>{
 
 })
