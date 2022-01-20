@@ -9,10 +9,11 @@ const App = express()
 
 const mongoose = require('mongoose')
 const dbURI = "mongodb://netninja:test1234@node-shard-00-00.02vk8.mongodb.net:27017,node-shard-00-01.02vk8.mongodb.net:27017,node-shard-00-02.02vk8.mongodb.net:27017/salaobeleza?ssl=true&replicaSet=atlas-c50oyj-shard-0&authSource=admin&retryWrites=true&w=majority"
-//,{useNewUrlParser:true, useUnifiedTopology:true}
+
 mongoose.connect(dbURI,{useNewUrlParser:true, useUnifiedTopology:true})
 .then((result)=>{console.log('Conectado a BD')})
 .catch((err)=>console.log(err))
+
 App.set('view engine', 'ejs')
 
 
@@ -61,9 +62,15 @@ App.post('/contas', (req, res) => {
         console.log(err)
     })
 })
-//Delete Conta
 
-//Update Conta
+App.put('/contas/delete/:id',(req, res)=>{
+
+})
+
+App.put('/contas/:id',(req, res)=>{
+
+})
+
 
 /* ---------- FIM CONTA ---------- */
 
@@ -98,4 +105,140 @@ App.post('/categorias', (req, res) => {
         console.log(err)
     })
 })
+
+App.delete('/categorias/:id',(req, res)=>{
+
+})
+
+App.put('/categorias/:id',(req, res)=>{
+
+})
+
 /* ---------- FIM CATEGORIA ---------- */
+/* ---------- AGENDA ---------- */
+App.post('/agendas',(req, res)=>{
+
+})
+
+App.get('/agendas/staff/:id',(req, res)=>{
+
+})
+App.get('/agendas/:id',(req, res)=>{
+
+})
+App.delete('/agendas/:id',(req, res)=>{
+
+})
+App.put('/agendas/:id',(req, res)=>{
+
+})
+/* ---------- FIM AGENDA ---------- */
+
+
+/* ---------- CLIENTE ---------- */
+App.post('/clientes',(req, res)=>{
+
+})
+
+App.get('/clientes',(req, res)=>{
+
+})
+
+App.get('/clientes/:id',(req, res)=>{
+
+})
+
+App.put('/clientes/delete/:id',(req, res)=>{
+
+})
+
+App.put('/categorias/:id',(req, res)=>{
+
+})
+
+/* ---------- FIM CLIENTE ---------- */
+
+/* ---------- CONTACTO ---------- */
+App.post('/contactos',(req, res)=>{
+
+})
+
+App.get('/contactos',(req, res)=>{
+
+})
+
+App.get('/contactos/staff',(req, res)=>{
+
+})
+
+App.get('/contactos/clientes',(req, res)=>{
+
+})
+
+App.get('/contactos/:id',(req, res)=>{
+
+})
+
+App.delete('/contactos/:id',(req, res)=>{
+
+})
+
+App.put('/contactos/:id',(req, res)=>{
+
+})
+
+/* ---------- FIM CONTACTO ---------- */
+
+/* ---------- ENDERECO ---------- */
+App.post('/enderecos',(req, res)=>{
+
+})
+
+App.get('/enderecos',(req, res)=>{
+
+})
+
+App.get('/enderecos/staff',(req, res)=>{
+
+})
+
+App.get('/enderecos/clientes',(req, res)=>{
+
+})
+
+App.get('/enderecos/:id',(req, res)=>{
+
+})
+
+App.delete('/enderecos/:id',(req, res)=>{
+
+})
+
+App.put('/enderecos/:id',(req, res)=>{
+
+})
+
+/* ---------- FIM ENDERECO ---------- */
+
+/* ---------- STAFF ---------- */
+App.post('/staff',(req, res)=>{
+
+})
+
+App.get('/staff',(req, res)=>{
+
+})
+
+App.get('/staff/:id',(req, res)=>{
+
+})
+
+App.put('/staff/delete/:id',(req, res)=>{
+
+})
+
+App.put('/staff/:id',(req, res)=>{
+
+})
+
+/* ---------- FIM STAFF ---------- */
