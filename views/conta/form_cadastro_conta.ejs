@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/mystyle.css">
+    <title>Document</title>
+</head>
+<body class="dead-center">
+    <form class="form-container" action="/contas" method="post">
+        <div class="head">
+            <h1>Fomulário de Cadastro</h1>
+        </div>
+        <div class="image-container" style="display: flex; justify-content: center; margin-top: 15px;">
+            <img src="/vector-g60ff9bea0_640.png" alt="Avatar" class="avatar" width="150" height="200">
+        </div>
+    
+        <div class="container">
+          <label for="nome">Nome Completo</label>
+          <input type="text" placeholder="Digite seu nome..." name="nome" id="nome" required>
+
+          <label for="telefone">Telefone</label>
+          <input type="text" placeholder="Digite seu telefone." name="telefone" id="telefone" required>
+
+          <label for="email">E-mail</label>
+          <input type="text" placeholder="Digite seu e-mail..." name="email" id="email" required>
+    
+          <label for="senha">Senha</label>
+          <input type="password" placeholder="Digite sua senha..." name="senha" id="senha" required>
+
+          <label for="confirma">Confirmar</label>
+          <input type="password" placeholder="Confirme sua senha..." name="confirma" id="confirma" required>
+
+          <button type="submit">Cadastrar</button>
+          
+        </div>
+    
+        <div class="container" style="display: flex; justify-content: center;">
+          <span class="psw"><a href="/">Já possuo uma contas</a></span>
+        </div>
+      </form>
+</body>
+</html>

@@ -14,23 +14,21 @@ mongoose.connect(dbURI,{useNewUrlParser:true, useUnifiedTopology:true})
 .then((result)=>{console.log('Conectado a BD')})
 .catch((err)=>console.log(err))
 
-App.set('view engine', 'ejs')
-
-
-
 //Setting the View Engine
 App.set('view engine', 'ejs')
 //Listen to the port
 App.listen(port)
+App.use(express.static('public/css'))
+App.use(express.static('public/img'))
 App.use(express.urlencoded({extended:true}))
 
 /* ---------- LOGIN ---------- */
 App.get('/', (req, res) => {
-    res.render('sign/index')
+    res.render('conta/index')
 })
 
-App.get('/new', (req, res) => {
-    res.render('sign/form_cadastro_conta')
+App.get('/contas/new', (req, res) => {
+    res.render('conta/form_cadastro_conta')
 })
 /* ---------- FIM LOGIN ---------- */
 
@@ -137,7 +135,7 @@ App.put('/agendas/:id',(req, res)=>{
 
 
 /* ---------- CLIENTE ---------- */
-const Cliente = require('./models/cliente')
+/*const Cliente = require('./models/cliente')*/
 
 App.post('/clientes',(req, res)=>{
 

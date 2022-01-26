@@ -8,6 +8,6 @@ const enderecoSchema = new Schema({
     bairro : {type:String, required:false}
 })
 
-const Endereco = mongoose.model('Endereco', clienteSchema)
+const Endereco = mongoose.model('Endereco', enderecoSchema)
 
 module.exports = Endereco

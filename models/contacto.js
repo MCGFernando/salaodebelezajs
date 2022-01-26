@@ -7,6 +7,6 @@ const contactoSchema = new Schema({
     email : {type:String, required:false}
 })
 
-const Contacto = mongoose.model('Contacto', clienteSchema)
+const Contacto = mongoose.model('Contacto', contactoSchema)
 
 module.exports = Contacto

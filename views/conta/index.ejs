@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Document</title>
+</head>
+<body class="dead-center">
+    <form class="form-container" action="/contas" method="post">
+        <div class="head">
+            <h1>Fomulário de Login</h1>
+        </div>
+        <div class="image-container" style="display: flex; justify-content: center; margin-top: 15px;">
+            <img src="/vector-g60ff9bea0_640.png" alt="Avatar" class="avatar" width="150" height="200">
+        </div>
+    
+        <div class="container">
+          <label for="emial">E-mail</label>
+          <input type="text" placeholder="Digite seu e-mail..." name="email" id="email" required>
+    
+          <label for="senha">Senha</label>
+          <input type="password" placeholder="Digite sua senha..." name="senha" id="senha" required>
+          
+          <div class="container">
+            <span class="psw">Equeci <a href="#">minha senha</a></span>
+          </div>
+
+          <button type="submit">Entrar</button>
+          
+        </div>
+    
+        <div class="container" style="display: flex; justify-content: center;">
+          <span class="psw"><a href="/contas/new">Cadastrar-se</a></span>
+        </div>
+      </form>
+</body>
+</html>
