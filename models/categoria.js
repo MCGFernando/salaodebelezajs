@@ -8,6 +8,6 @@ const categoriaSchema = new Schema({
     sequenciaSubCategoria : {type:String, required:false}
 }, {timestamps:true})
 
-const Categoria = mongoose.model('Categoria',categoriaSchema)
+const Categoria = mongoose.model('Categoria', categoriaSchema)
 
 module.exports = Categoria

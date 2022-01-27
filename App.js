@@ -139,7 +139,7 @@ App.put('/agendas/:id',(req, res)=>{
 
 
 /* ---------- CLIENTE ---------- */
-/*const Cliente = require('./models/cliente')*/
+const Cliente = require('./models/cliente')
 
 App.post('/clientes',(req, res)=>{
 
@@ -253,3 +253,29 @@ App.put('/staff/:id',(req, res)=>{
 })
 
 /* ---------- FIM STAFF ---------- */
+
+
+/* ---------- FIM PRODUCTO SERVICO ---------- */
+const ProductoServico = require('./models/productoServico')
+App.get('/productoservico',(req, res)=>{
+    ProductoServico.find().sort({ createdAt: -1 }).populate('categoria')
+    .then((result) => {
+        res.send(result)
+    }).catch((err) => console.log(err))
+})
+
+App.get('/productoservico/new',(req, res)=>{
+    Categoria.find().sort({ createdAt: -1 })
+    .then((result) => {
+        res.render('productoservico/form_cadastro_productoservico', { categorias: result })
+    }).catch((err) => console.log(err))
+})
+
+App.post('/productoservico',(req, res)=>{
+    const productoservico = new ProductoServico(req.body)
+    productoservico.save().then((result)=>{
+        res.send(result)
+    }).catch((err) => console.log(err))
+})
+
+/* ---------- FIM PRODUCTO SERVICO ---------- */
