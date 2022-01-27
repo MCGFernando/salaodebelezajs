@@ -233,7 +233,7 @@ App.put('/enderecos/:id',(req, res)=>{
 const Staff = require('./models/staff')
 
 App.post('/staff',(req, res)=>{
-
+    console.log(req.body)
 })
 
 App.get('/staff',(req, res)=>{

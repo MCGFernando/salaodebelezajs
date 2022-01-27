@@ -10,7 +10,7 @@ const prudctoServicoSchema = new Schema({
     desconto  : {type:Number},
     iva  : {type:Number},
     taxaLucro  : {type:Number},
-    valorVenda  : {type:Number, required:true},
+    valorVenda  : {type:Number, required:true}
 },{timestamps:true})
 
 const ProductoServico = mongoose.model('ProductoServico',prudctoServicoSchema)
