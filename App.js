@@ -30,6 +30,10 @@ App.get('/', (req, res) => {
 App.get('/contas/new', (req, res) => {
     res.render('conta/form_cadastro_conta')
 })
+
+App.get('/staffs/new', (req, res) => {
+    res.render('staff/form_cadastro_staff')
+})
 /* ---------- FIM LOGIN ---------- */
 
 /* ---------- CONTA ---------- */

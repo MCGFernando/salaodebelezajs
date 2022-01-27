@@ -6,6 +6,9 @@ const contaSchema = new Schema({
     email : {type:String, required:true},
     telefone : {type:String, required:true},
     senha : {type:String, required:true},
+    cliente : {type:Boolean, default:false},
+    staff : {type:Boolean, default:false},
+    admin : {type:Boolean, default:false},
     estado : {type:Boolean, default:false}
 }, {timestamps:true})
 
