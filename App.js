@@ -31,7 +31,7 @@ App.get('/contas/new', (req, res) => {
     res.render('conta/form_cadastro_conta')
 })
 
-App.get('/staffs/new', (req, res) => {
+App.get('/staff/new', (req, res) => {
     res.render('staff/form_cadastro_staff')
 })
 /* ---------- FIM LOGIN ---------- */
@@ -204,7 +204,10 @@ App.post('/enderecos',(req, res)=>{
 })
 
 App.get('/enderecos',(req, res)=>{
-
+    Endereco.find().sort({ createdAt: -1 }).populate('conta')
+    .then((result) => {
+        res.send(result)
+    }).catch((err) => console.log(err))
 })
 
 App.get('/enderecos/staff',(req, res)=>{
@@ -233,11 +236,51 @@ App.put('/enderecos/:id',(req, res)=>{
 const Staff = require('./models/staff')
 
 App.post('/staff',(req, res)=>{
-    console.log(req.body)
+    const conta = new Conta(req.body)
+    
+    conta.save().then((result)=>{
+        console.log("Conta Cadastrada")
+    }).catch((err)=>console.log(err))
+     
+    const endereco = new Endereco({
+        endereco:req.body.endereco,
+        cidade:req.body.cidade,
+        bairro:req.body.bairro,
+        conta
+    })
+    endereco.save().then((result)=>{
+        console.log("Endereco Cadastrada")
+    }).catch((err)=>console.log(err))
+
+    const staff = new Staff({
+        funcao:req.body.funcao,
+        nascimento:req.body.nascimento,
+        genero:req.body.genero,
+        bi:req.body.bi,
+        conta
+    })
+    staff.save().then((result)=>{
+        res.send(result)
+    }).catch((err)=>console.log(err))
+    
+    
 })
 
-App.get('/staff',(req, res)=>{
+/* async function saveStaff(req){
+    const conta = new Conta(req.body)
+    const staff = new Staff(req.body)
+    const endereco = new Endereco(req.body)
 
+    await conta.save()
+    await endereco.save()
+    await staff.save()
+} */
+
+App.get('/staff',(req, res)=>{
+    Staff.find().sort({ createdAt: -1 }).populate('conta')
+    .then((result) => {
+        res.send(result)
+    }).catch((err) => console.log(err))
 })
 
 App.get('/staff/:id',(req, res)=>{
@@ -257,6 +300,7 @@ App.put('/staff/:id',(req, res)=>{
 
 /* ---------- FIM PRODUCTO SERVICO ---------- */
 const ProductoServico = require('./models/productoServico')
+const Endereco = require('./models/endereco')
 App.get('/productoservico',(req, res)=>{
     ProductoServico.find().sort({ createdAt: -1 }).populate('categoria')
     .then((result) => {
