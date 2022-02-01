@@ -34,6 +34,10 @@ App.get('/contas/new', (req, res) => {
 App.get('/staff/new', (req, res) => {
     res.render('staff/form_cadastro_staff')
 })
+
+App.get('/clientes/new', (req, res) => {
+    res.render('cliente/form_cadastro_cliente')
+})
 /* ---------- FIM LOGIN ---------- */
 
 /* ---------- CONTA ---------- */
@@ -120,11 +124,18 @@ App.put('/categorias/:id',(req, res)=>{
 const Agenda = require('./models/agenda')
 
 App.post('/agendas',(req, res)=>{
-
+    const agenda = new Agenda(req.body)
+    res.send(agenda)
 })
 
 App.get('/agendas/staff/:id',(req, res)=>{
-
+    const id = req.params.id
+    Staff.findById(id).populate('conta')
+    .then((result)=>{
+        res.render('agenda/form_cadastro_agenda', {staffAgenda : result})
+    }).catch((err)=>{
+        res.render('404', {title:'Page not found'})    
+    })
 })
 App.get('/agendas/:id',(req, res)=>{
 
@@ -142,7 +153,32 @@ App.put('/agendas/:id',(req, res)=>{
 const Cliente = require('./models/cliente')
 
 App.post('/clientes',(req, res)=>{
+    const conta = new Conta(req.body)
+    
+    conta.save().then((result)=>{
+        console.log("Conta Cadastrada")
+    }).catch((err)=>console.log(err))
+     
+    const endereco = new Endereco({
+        endereco:req.body.endereco,
+        cidade:req.body.cidade,
+        bairro:req.body.bairro,
+        conta
+    })
+    endereco.save().then((result)=>{
+        console.log("Endereco Cadastrada")
+    }).catch((err)=>console.log(err))
 
+    const cliente = new Cliente({
+        imagem:req.body.imagem,
+        nascimento:req.body.nascimento,
+        genero:req.body.genero,
+        desconto:req.body.desconto,
+        conta
+    })
+    cliente.save().then((result)=>{
+        res.send(result)
+    }).catch((err)=>console.log(err))
 })
 
 App.get('/clientes',(req, res)=>{
@@ -279,12 +315,18 @@ App.post('/staff',(req, res)=>{
 App.get('/staff',(req, res)=>{
     Staff.find().sort({ createdAt: -1 }).populate('conta')
     .then((result) => {
-        res.send(result)
+        res.render('staff/table_lista_staff', {staffs : result})
     }).catch((err) => console.log(err))
 })
 
 App.get('/staff/:id',(req, res)=>{
-
+    const id = req.params.id
+    Staff.findById(id).populate('conta')
+    .then((result)=>{
+        res.send(result)
+    }).catch((err)=>{
+        res.render('404', {title:'Page not found'})    
+    })
 })
 
 App.put('/staff/delete/:id',(req, res)=>{
