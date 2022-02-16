@@ -1,0 +1,92 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/mystyle.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table
+      id="table"
+      data-toggle="table"
+      data-search="true"
+      data-filter-control="true"
+      data-show-export="true"
+      data-click-to-select="true"
+      data-toolbar="#toolbar"
+    >
+      <thead>
+        <tr>
+          <th data-field="state" data-checkbox="true"></th>
+          <th
+            data-field="prenom"
+            data-filter-control="input"
+            data-sortable="true"
+          >
+            Dia
+          </th>
+          <th
+            data-field="prenom"
+            data-filter-control="input"
+            data-sortable="true"
+          >
+            Entrada
+          </th>
+          <th
+            data-field="prenom"
+            data-filter-control="input"
+            data-sortable="true"
+          >
+            Saida
+          </th>
+          <th
+            data-field="prenom"
+            data-filter-control="input"
+            data-sortable="true"
+          >
+            Estado
+          </th>
+          <th data-field="note" data-sortable="true">Note</th>
+          <th data-field="note" data-sortable="true">Acção</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (agendas.length > 0){%> <% agendas.forEach(agenda=>{ %>
+        <tr>
+          <td class="bs-checkbox">
+            <input data-index="0" name="btSelectItem" type="checkbox" />
+          </td>
+          <td><%= agendas%></td>
+          <td><%= agendas%></td>
+          <td><%= agendas%></td>
+          <td><%= agendas%></td>
+          <td>
+            <a class="marcar" data-doc="<%= cliente._id%>">Marcar</a>
+          </td>
+        </tr>
+        <% }) %> <% } else { %>
+        <tr>
+          <td>Não há clientes a mostrar</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <script>
+      const agendar = document.querySelector("a.marcar");
+      agendar.addEventListener("click", (e) => {
+        const endpoint = `/marcacoes/clientes/${agendar.dataset.doc}`;
+        console.log(endpoint)
+        window.location.href = endpoint
+        /* fetch(endpoint, {
+          method: "GET",
+        })
+          .then((response) => response.json())
+          .then((data) => (window.location.href = data.redirect))
+          .catch((err) => {
+            console.log(err);
+          }); */
+      });
+    </script>
+  </body>
+</html>

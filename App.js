@@ -169,6 +169,15 @@ App.get("/agendas/staff/:id", (req, res) => {
       res.render("404", { title: "Page not found" });
     });
 });
+App.get("/agendas", (req, res) => {
+    Agenda.find().populate("staff")
+    .then((result) => {
+        res.send(result);
+      })
+      .catch((err) => {
+        res.render("404", { title: "Page not found" });
+      });
+});
 App.get("/agendas/:id", (req, res) => {});
 App.delete("/agendas/:id", (req, res) => {});
 App.put("/agendas/:id", (req, res) => {});
