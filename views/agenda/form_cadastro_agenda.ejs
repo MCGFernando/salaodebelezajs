@@ -7,7 +7,7 @@
     <title>Document</title>
   </head>
   <body>
-    <form class="form-container" action="/agendas" method="post">
+    <form class="form-container" id="form-agenda" action="/agendas" method="post">
       <div class="head">
         <h1>Fomulário de Definição de Agenda</h1>
       </div>
@@ -74,12 +74,12 @@
         <hr />
         <div>
           <div>
-            <label for="">Domingo</label><input type="checkbox" name="dia[]" data-dia="1">
+            <label for="">Domingo</label><input type="checkbox" name="dia[]" value="1">
             <label for="">Entrada</label><input type="time" name="entrada[]" id="">
             <label for="">Saída</label><input type="time" name="saida[]" id="">
           </div>
           <div>
-            <label for="">Segunda</label><input type="checkbox" name="dia[]" data-dia="2">
+            <label for="">Segunda</label><input type="checkbox" name="dia[]" value="2">
             <label for="">Entrada</label><input type="time" name="entrada[]" id="">
             <label for="">Saída</label><input type="time" name="saida[]" id="">
           </div>
@@ -109,8 +109,16 @@
             <label for="">Saída</label><input type="time" name="saida[]" id="">
           </div>          
         </div>
+        <input type="hidden" name="staff" id="staff" value="<%=staffAgenda._id%>">
         <button type="submit">Cadastrar</button>
       </div>
     </form>
+    <!-- <script>
+      const formulario = document.querySelector('#form-agenda')
+      formulario.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        console.log(formulario.getElementsByTagName("dia")[0].dataset.dia[0])
+      })
+    </script> -->
   </body>
 </html>
