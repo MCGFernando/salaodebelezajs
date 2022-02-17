@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    <%- include('../partials/head.ejs') %>
+    <%- include('../partials/sidebar.ejs') %>
     <form class="form-container" action="/categorias" method="post">
         <div class="head">
             <h1>Cadastro de Categorias</h1>
@@ -18,9 +20,6 @@
             <input type="text" id="categoria" name="categoria" required>
         <button>Cadastrar</button>
         </div>
-        
-        
-        
     </form>
 </body>
 </html>
