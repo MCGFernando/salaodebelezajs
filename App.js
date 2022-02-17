@@ -91,7 +91,7 @@ App.get("/categorias", (req, res) => {
   Categoria.find()
     .sort({ createdAt: -1 })
     .then((result) => {
-      res.render("categoria/index", { categorias: result });
+      res.render("categoria/table_lista_categoria", { categorias: result });
     })
     .catch((err) => console.log(err));
 });
