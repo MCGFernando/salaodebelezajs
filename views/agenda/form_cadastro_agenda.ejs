@@ -11,145 +11,150 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="grid-container">
-      <%- include('../partials/head.ejs') %> <%-
-      include('../partials/sidebar.ejs') %>
-      <main class="main">
-        <form
-          class="form-container"
-          id="form-agenda"
-          action="/agendas"
-          method="post"
-        >
-          <div
-            class="image-container"
-            style="display: flex; justify-content: center; margin-top: 15px"
-          >
-            <img
-              src="/vector-g60ff9bea0_640.png"
-              alt="Avatar"
-              class="avatar"
-              width="150"
-              height="200"
-            />
+    <div class="flex-container">
+      <%- include('../partials/sidebar.ejs') %>
+
+      <div class="flex-column container">
+        <%- include('../partials/head.ejs') %>
+        <main class="content">
+          <div class="card">
+            <form
+              class="form-container"
+              id="form-agenda"
+              action="/agendas"
+              method="post"
+            >
+              <div
+                class="image-container"
+                style="display: flex; justify-content: center; margin-top: 15px"
+              >
+                <img
+                  src="/vector-g60ff9bea0_640.png"
+                  alt="Avatar"
+                  class="avatar"
+                  width="150"
+                  height="200"
+                />
+              </div>
+  
+              <div class="container">
+                <label for="nome">Nome Funcionario</label>
+                <input
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  value="<%= staffAgenda.conta.nome %>"
+                  data-idConta=""
+                  readonly
+                />
+  
+                <label for="telefone">Telefone</label>
+                <input
+                  type="text"
+                  placeholder="Digite seu telefone."
+                  name="telefone"
+                  id="telefone"
+                  value="<%= staffAgenda.conta.telefone %>"
+                  required
+                />
+  
+                <label for="email">E-mail</label>
+                <input
+                  type="text"
+                  placeholder="Digite seu e-mail..."
+                  name="email"
+                  id="email"
+                  value="<%= staffAgenda.conta.email %>"
+                  required
+                />
+  
+                <label for="funcao">Função</label>
+                <input
+                  type="text"
+                  placeholder="Digite a Função."
+                  name="funcao"
+                  id="funcao"
+                  value="<%= staffAgenda.funcao %>"
+                  required
+                />
+                <label for="imagem">Imagem</label>
+                <input
+                  type="text"
+                  placeholder="Selecione a Imagem."
+                  name="imagem"
+                  id="imagem"
+                />
+                <hr />
+                <div>
+                  <div>
+                    <label for="">Domingo</label
+                    ><input type="checkbox" name="dia[]" value="1" />
+                    <label for="">Entrada</label
+                    ><input type="time" name="entrada[]" id="" />
+                    <label for="">Saída</label
+                    ><input type="time" name="saida[]" id="" />
+                  </div>
+                  <div>
+                    <label for="">Segunda</label
+                    ><input type="checkbox" name="dia[]" value="2" />
+                    <label for="">Entrada</label
+                    ><input type="time" name="entrada[]" id="" />
+                    <label for="">Saída</label
+                    ><input type="time" name="saida[]" id="" />
+                  </div>
+                  <div>
+                    <label for="">Terça</label
+                    ><input type="checkbox" name="dia[]" data-dia="3" />
+                    <label for="">Entrada</label
+                    ><input type="time" name="entrada[]" id="" />
+                    <label for="">Saída</label
+                    ><input type="time" name="saida[]" id="" />
+                  </div>
+                  <div>
+                    <label for="">Quarta</label
+                    ><input type="checkbox" name="dia[]" data-dia="4" />
+                    <label for="">Entrada</label
+                    ><input type="time" name="entrada[]" id="" />
+                    <label for="">Saída</label
+                    ><input type="time" name="saida[]" id="" />
+                  </div>
+                  <div>
+                    <label for="">Quinta</label
+                    ><input type="checkbox" name="dia[]" data-dia="5" />
+                    <label for="">Entrada</label
+                    ><input type="time" name="entrada[]" id="" />
+                    <label for="">Saída</label
+                    ><input type="time" name="saida[]" id="" />
+                  </div>
+                  <div>
+                    <label for="">Sexta</label
+                    ><input type="checkbox" name="dia[]" data-dia="6" />
+                    <label for="">Entrada</label
+                    ><input type="time" name="entrada[]" id="" />
+                    <label for="">Saída</label
+                    ><input type="time" name="saida[]" id="" />
+                  </div>
+                  <div>
+                    <label for="">Sabado</label
+                    ><input type="checkbox" name="dia[]" data-dia="7" />
+                    <label for="">Entrada</label
+                    ><input type="time" name="entrada[]" id="" />
+                    <label for="">Saída</label
+                    ><input type="time" name="saida[]" id="" />
+                  </div>
+                </div>
+                <input
+                  type="hidden"
+                  name="staff"
+                  id="staff"
+                  value="<%=staffAgenda._id%>"
+                />
+                <button type="submit">Cadastrar</button>
+              </div>
+            </form>
           </div>
-
-          <div class="container">
-            <label for="nome">Nome Funcionario</label>
-            <input
-              type="text"
-              name="nome"
-              id="nome"
-              value="<%= staffAgenda.conta.nome %>"
-              data-idConta=""
-              readonly
-            />
-
-            <label for="telefone">Telefone</label>
-            <input
-              type="text"
-              placeholder="Digite seu telefone."
-              name="telefone"
-              id="telefone"
-              value="<%= staffAgenda.conta.telefone %>"
-              required
-            />
-
-            <label for="email">E-mail</label>
-            <input
-              type="text"
-              placeholder="Digite seu e-mail..."
-              name="email"
-              id="email"
-              value="<%= staffAgenda.conta.email %>"
-              required
-            />
-
-            <label for="funcao">Função</label>
-            <input
-              type="text"
-              placeholder="Digite a Função."
-              name="funcao"
-              id="funcao"
-              value="<%= staffAgenda.funcao %>"
-              required
-            />
-            <label for="imagem">Imagem</label>
-            <input
-              type="text"
-              placeholder="Selecione a Imagem."
-              name="imagem"
-              id="imagem"
-            />
-            <hr />
-            <div>
-              <div>
-                <label for="">Domingo</label
-                ><input type="checkbox" name="dia[]" value="1" />
-                <label for="">Entrada</label
-                ><input type="time" name="entrada[]" id="" />
-                <label for="">Saída</label
-                ><input type="time" name="saida[]" id="" />
-              </div>
-              <div>
-                <label for="">Segunda</label
-                ><input type="checkbox" name="dia[]" value="2" />
-                <label for="">Entrada</label
-                ><input type="time" name="entrada[]" id="" />
-                <label for="">Saída</label
-                ><input type="time" name="saida[]" id="" />
-              </div>
-              <div>
-                <label for="">Terça</label
-                ><input type="checkbox" name="dia[]" data-dia="3" />
-                <label for="">Entrada</label
-                ><input type="time" name="entrada[]" id="" />
-                <label for="">Saída</label
-                ><input type="time" name="saida[]" id="" />
-              </div>
-              <div>
-                <label for="">Quarta</label
-                ><input type="checkbox" name="dia[]" data-dia="4" />
-                <label for="">Entrada</label
-                ><input type="time" name="entrada[]" id="" />
-                <label for="">Saída</label
-                ><input type="time" name="saida[]" id="" />
-              </div>
-              <div>
-                <label for="">Quinta</label
-                ><input type="checkbox" name="dia[]" data-dia="5" />
-                <label for="">Entrada</label
-                ><input type="time" name="entrada[]" id="" />
-                <label for="">Saída</label
-                ><input type="time" name="saida[]" id="" />
-              </div>
-              <div>
-                <label for="">Sexta</label
-                ><input type="checkbox" name="dia[]" data-dia="6" />
-                <label for="">Entrada</label
-                ><input type="time" name="entrada[]" id="" />
-                <label for="">Saída</label
-                ><input type="time" name="saida[]" id="" />
-              </div>
-              <div>
-                <label for="">Sabado</label
-                ><input type="checkbox" name="dia[]" data-dia="7" />
-                <label for="">Entrada</label
-                ><input type="time" name="entrada[]" id="" />
-                <label for="">Saída</label
-                ><input type="time" name="saida[]" id="" />
-              </div>
-            </div>
-            <input
-              type="hidden"
-              name="staff"
-              id="staff"
-              value="<%=staffAgenda._id%>"
-            />
-            <button type="submit">Cadastrar</button>
-          </div>
-        </form>
-      </main>
+        </main>
+      </div>
     </div>
 
     <!-- <script>

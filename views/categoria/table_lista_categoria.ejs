@@ -1,20 +1,28 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <div>
-        <% if (categorias.length > 0){%>
-            <% categorias.forEach(categoria=>{%>
-                <h2><%= categoria.categoria %></h2>
-                <p><a href="">Ver Subcategorias >></a></p>
-            <% }) %>
-        <% } else { %>
+  </head>
+  <body>
+    <div class="flex-container">
+      <%- include('../partials/sidebar.ejs') %>
+
+      <div class="flex-column container">
+        <%- include('../partials/head.ejs') %>
+        <main class="content">
+          <div class="card">
+            <% if (categorias.length > 0){%> <%
+            categorias.forEach(categoria=>{%>
+            <h2><%= categoria.categoria %></h2>
+            <p><a href="">Ver Subcategorias >></a></p>
+            <% }) %> <% } else { %>
             <p>Sem Categorias para mostrar</p>
-        <% } %>
+            <% } %>
+          </div>
+        </main>
+      </div>
     </div>
-</body>
+  </body>
 </html>

@@ -11,52 +11,55 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="grid-container">
-      <%- include('../partials/head.ejs') %> <%-
-      include('../partials/sidebar.ejs') %>
-      <main class="main">
-        <div style="width: 100%">
-          <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Estado</th>
-                <th>Data Criado</th>
-                <th>Data Actualizado</th>
-              </tr>
-              <tr>
-                <th></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% if (contas.length > 0){%> <% contas.forEach(conta=>{ %>
-              <tr>
-                  <td></td>
-                <td><%= conta.nome %></td>
-                <td><%= conta.email %></td>
-                <td><%= conta.telefone %></td>
-                <td><%= conta.estado %></td>
-                <td><%= conta.createdAt %></td>
-                <td><%= conta.updatedAt %></td>
-              </tr>
-              <% }) %> <% } else { %>
-              <tr>
-                <td>Não há contas para mostrar</td>
-              </tr>
-              <% } %>
-            </tbody>
-          </table>
-        </div>
-      </main>
+    <div class="flex-container">
+      <%- include('../partials/sidebar.ejs') %>
+
+      <div class="flex-column container">
+        <%- include('../partials/head.ejs') %>
+        <main class="content">
+          <div class="card">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th>Estado</th>
+                  <th>Data Criado</th>
+                  <th>Data Actualizado</th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th><input type="text" /></th>
+                  <th><input type="text" /></th>
+                  <th><input type="text" /></th>
+                  <th><input type="text" /></th>
+                  <th><input type="text" /></th>
+                  <th><input type="text" /></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (contas.length > 0){%> <% contas.forEach(conta=>{ %>
+                <tr>
+                    <td></td>
+                  <td><%= conta.nome %></td>
+                  <td><%= conta.email %></td>
+                  <td><%= conta.telefone %></td>
+                  <td><%= conta.estado %></td>
+                  <td><%= conta.createdAt %></td>
+                  <td><%= conta.updatedAt %></td>
+                </tr>
+                <% }) %> <% } else { %>
+                <tr>
+                  <td>Não há contas para mostrar</td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
     </div>
   </body>
 </html>

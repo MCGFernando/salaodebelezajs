@@ -11,61 +11,63 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="grid-container">
-      <%- include('../partials/head.ejs') %> <%-
-      include('../partials/sidebar.ejs') %>
-      <main class="main">
-        <div style="width: 100%;">
-          <table>
-            <tr>
-              <th></th>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>Telefone</th>
-              <th>Desconto</th>
-              <th>Gênero</th>
-              <th>Nascimento</th>
-              <th>Estado</th>
-              <th>Acção</th>
-          </tr>
-          <tr>
-            <th></th>
-              <th><input type="text"></th>
-              <th><input type="text"></th>
-              <th><input type="text"></th>
-              <th><input type="text"></th>
-              <th><input type="text"></th>
-              <th><input type="text"></th>
-              <th><input type="text"></th>
-          </tr>
-            <tbody>
-              <% if (clientes.length > 0){%> <% clientes.forEach(cliente=>{ %>
-              <tr>
-                <td class="bs-checkbox">
-                  <input data-index="0" name="btSelectItem" type="checkbox" />
-                </td>
-                <td><%= cliente.conta.nome%></td>
-                <td><%= cliente.conta.email%></td>
-                <td><%= cliente.conta.telefone%></td>
-                <td><%= cliente.desconto%></td>
-                <td><%= cliente.genero%></td>
-                <td><%= cliente.nescimento%></td>
-                <td><%= cliente.estado%></td>
-                <td>
-                  <a class="marcar" data-doc="<%= cliente._id%>">Marcar</a>
-                </td>
-              </tr>
-              <% }) %> <% } else { %>
-              <tr>
-                <td>Não há clientes a mostrar</td>
-              </tr>
-              <% } %>
-            </tbody>
-          </table>
-        </div>
-      </main>
-    </div>
+    <div class="flex-container">
+      <%- include('../partials/sidebar.ejs') %>
 
+      <div class="flex-column container">
+        <%- include('../partials/head.ejs') %>
+        <main class="content">
+          <div class="card">
+            <table>
+              <tr>
+                <th></th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Desconto</th>
+                <th>Gênero</th>
+                <th>Nascimento</th>
+                <th>Estado</th>
+                <th>Acção</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th><input type="text" /></th>
+                <th><input type="text" /></th>
+                <th><input type="text" /></th>
+                <th><input type="text" /></th>
+                <th><input type="text" /></th>
+                <th><input type="text" /></th>
+                <th><input type="text" /></th>
+              </tr>
+              <tbody>
+                <% if (clientes.length > 0){%> <% clientes.forEach(cliente=>{ %>
+                <tr>
+                  <td class="bs-checkbox">
+                    <input data-index="0" name="btSelectItem" type="checkbox" />
+                  </td>
+                  <td><%= cliente.conta.nome%></td>
+                  <td><%= cliente.conta.email%></td>
+                  <td><%= cliente.conta.telefone%></td>
+                  <td><%= cliente.desconto%></td>
+                  <td><%= cliente.genero%></td>
+                  <td><%= cliente.nescimento%></td>
+                  <td><%= cliente.estado%></td>
+                  <td>
+                    <a class="marcar" data-doc="<%= cliente._id%>">Marcar</a>
+                  </td>
+                </tr>
+                <% }) %> <% } else { %>
+                <tr>
+                  <td>Não há clientes a mostrar</td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
     <script>
       const agendar = document.querySelector("a.marcar");
       agendar.addEventListener("click", (e) => {

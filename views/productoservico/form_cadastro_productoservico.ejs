@@ -11,60 +11,83 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="grid-container">
-      <%- include('../partials/head.ejs') %> 
+    <div class="flex-container">
       <%- include('../partials/sidebar.ejs') %>
-      <main class="main">
-        <form class="form-container" action="/productoservico" method="post">
-          <div class="container">
-            <label for="categoria">Categoria</label>
-            <select name="categoria" id="categoria" required>
-              <% if (categorias.length > 0){%>
-              <option value="0" disabled>Selecione a Categoria</option>
-              <% categorias.forEach(categoria=>{ %>
-              <option value="<%=categoria._id %>">
-                <%= categoria.categoria %>
-              </option>
-              <% }) %> <% } else { %>
-              <option value="0" disabled>Sem Categorias disponíveis</option>
-              <% } %>
-            </select>
-            <label for="productoServico">Producto / Serviço</label>
-            <input
-              type="text"
-              id="productoServico"
-              name="productoServico"
-              required
-            />
-            <label for="descricao">Descrição</label>
-            <input type="text" id="descricao" name="descricao" />
-            <label for="quantidade">Quantidade</label>
-            <input type="number" id="quantidade" name="quantidade" min="1" />
-            <label for="valorCompra">Valor de Compra</label>
-            <input
-              type="number"
-              id="valorCompra"
-              name="valorCompra"
-              step="0.01"
-            />
-            <label for="desconto">Desconto</label>
-            <input type="number" id="desconto" name="desconto" step="0.01" />
-            <label for="iva">IVA</label>
-            <input type="number" id="iva" name="iva" step="0.01" />
-            <label for="taxaLucro">Taxa de Lucro</label>
-            <input type="number" id="taxaLucro" name="taxaLucro" step="0.01" />
-            <label for="valorVenda">Valor de Venda</label>
-            <input
-              type="number"
-              id="valorVenda"
-              name="valorVenda"
-              step="0.01"
-              required
-            />
-            <button>Cadastrar</button>
+
+      <div class="flex-column container">
+        <%- include('../partials/head.ejs') %>
+        <main class="content">
+          <div class="card">
+            <form
+              class="form-container"
+              action="/productoservico"
+              method="post"
+            >
+              <div class="container">
+                <label for="categoria">Categoria</label>
+                <select name="categoria" id="categoria" required>
+                  <% if (categorias.length > 0){%>
+                  <option value="0" disabled>Selecione a Categoria</option>
+                  <% categorias.forEach(categoria=>{ %>
+                  <option value="<%=categoria._id %>">
+                    <%= categoria.categoria %>
+                  </option>
+                  <% }) %> <% } else { %>
+                  <option value="0" disabled>Sem Categorias disponíveis</option>
+                  <% } %>
+                </select>
+                <label for="productoServico">Producto / Serviço</label>
+                <input
+                  type="text"
+                  id="productoServico"
+                  name="productoServico"
+                  required
+                />
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao" />
+                <label for="quantidade">Quantidade</label>
+                <input
+                  type="number"
+                  id="quantidade"
+                  name="quantidade"
+                  min="1"
+                />
+                <label for="valorCompra">Valor de Compra</label>
+                <input
+                  type="number"
+                  id="valorCompra"
+                  name="valorCompra"
+                  step="0.01"
+                />
+                <label for="desconto">Desconto</label>
+                <input
+                  type="number"
+                  id="desconto"
+                  name="desconto"
+                  step="0.01"
+                />
+                <label for="iva">IVA</label>
+                <input type="number" id="iva" name="iva" step="0.01" />
+                <label for="taxaLucro">Taxa de Lucro</label>
+                <input
+                  type="number"
+                  id="taxaLucro"
+                  name="taxaLucro"
+                  step="0.01"
+                />
+                <label for="valorVenda">Valor de Venda</label>
+                <input
+                  type="number"
+                  id="valorVenda"
+                  name="valorVenda"
+                  step="0.01"
+                  required
+                />
+                <button>Cadastrar</button>
+              </div>
+            </form>
           </div>
-        </form>
-      </main>
-    </div>
+        </main>
+      </div>
   </body>
 </html>

@@ -334,7 +334,7 @@ App.post("/staff", (req, res) => {
   staff
     .save()
     .then((result) => {
-      res.send(result);
+      res.redirect('/staff')
     })
     .catch((err) => console.log(err));
 });

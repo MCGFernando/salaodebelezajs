@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Muli', sans-serif;
+}
+
+
+.head {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-size: 1.6rem;
+  background-color: #7175da;
+  box-shadow: 0 10px 10px rgb(0 0 0 / 20%);
+  color: white;
+}
+.menu {
+  grid-area: menu;
+  background-color: #2A265F;
+}
+.main {
+  width: 350px;
+  grid-area: main;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(45deg, #7175da, #9790F2);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "menu header header header header header"
+    "menu main main main main main";
+  gap: 0;
+  padding: 0;
+}
+.menu-itens {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.menu-itens a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 25px;
+  margin-top: 16px;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  width: 90%;
+}
+.menu-itens a:hover {
+  background-color: #9790F2;
+  opacity: 0.8;
+  color: white;
+}
+
+.container {
+  padding: 16px;
+}
+
+.form-container {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid rgba(248, 246, 246, 0.563);
+  box-shadow: 0 10px 10px rgb(0 0 0 / 20%);
+  border-radius: 10px;
+  width: 30%;
+}
+
+.dead-center {
+  /* background-color: rgb(0, 0, 0); 
+  background-color: rgba(0, 0, 0, 0.4); */
+  background-image: linear-gradient(45deg, #7175da, #9790F2);
+}
+
+button {
+  background-color: #2A265F;
+  border-radius: 10px;
+  color: #fff;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+label{
+  color: #2A265F;
+  opacity: 0.8;
+  letter-spacing: 1px;
+}
+  
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  background-color: white;
+  width: 80%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th input {
+  width: 100%;
+  border: 1px solid #acacac;
+  height: 2em;
+  outline: mediumseagreen;
+}
+.search-options {
+  display: flex;
+  justify-content: space-between;
+}
