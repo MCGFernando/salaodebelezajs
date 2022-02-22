@@ -414,3 +414,49 @@ App.post("/productoservico", (req, res) => {
 });
 
 /* ---------- FIM PRODUCTO SERVICO ---------- */
+
+/* ---------- MARCACAO ---------- */
+const Marcacao = require("./models/marcacao");
+App.get("/marcacoes/new", (req, res) => {
+  res.render("marcacao/form_cadastro_marcacao");
+})
+
+
+
+App.get("/marcacoes", (req, res) => {
+  Conta.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render("conta/table_list_conta", { contas: result });
+    })
+    .catch((err) => console.log(err));
+});
+
+App.get("/marcacoes/:id", (req, res) => {
+  const id = req.params.id;
+  Conta.findById(id)
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render("conta/detail_conta", { conta: result });
+    })
+    .catch((err) => console.log(err));
+});
+
+//Post Conta
+App.post("/marcacoes", (req, res) => {
+  const conta = new Conta(req.body);
+  conta
+    .save()
+    .then((result) => {
+      res.redirect("/contas");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+App.put("/marcacoes/delete/:id", (req, res) => {});
+
+App.put("/marcacoes/:id", (req, res) => {});
+
+/* ---------- FIM MARCACAO ---------- */

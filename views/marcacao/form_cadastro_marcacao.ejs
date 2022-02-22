@@ -1,0 +1,93 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/mystyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="flex-container">
+      <%- include('../partials/sidebar.ejs') %>
+
+      <div class="flex-column container">
+        <%- include('../partials/head.ejs') %>
+        <main class="content">
+          <div class="card">
+            <form
+              class="form-container"
+              id="form-agenda"
+              action="/agendas"
+              method="post"
+            >
+              <div
+                class="image-container"
+                style="display: flex; justify-content: center; margin-top: 15px"
+              >
+                <img
+                  src="/vector-g60ff9bea0_640.png"
+                  alt="Avatar"
+                  class="avatar"
+                  width="150"
+                  height="200"
+                />
+              </div>
+  
+              <div class="container">
+                <label for="nome">Nome Funcionario</label>
+                <select name="" id="">
+                  <option value=""></option>
+                </select>
+  
+                <label for="email">Producto / Serviço</label>
+                <select name="" id="">
+                  <option value=""></option>
+                </select>
+
+                <label for="funcao">Cliente</label>
+                <input
+                  type="text"
+                  placeholder="Digite a Função."
+                  name="funcao"
+                  id="funcao"
+                  value=""
+                  readonly
+                />
+                <!-- Default data Today -->
+                <label for="imagem">Data</label>
+                <input
+                  type="date"
+                  placeholder="Selecione a Imagem."
+                  name="imagem"
+                  id="imagem"
+                />
+                <!-- Default time Now -->
+                <label for="imagem">Hora</label>
+                <input
+                  type="time"
+                  placeholder="Selecione a Imagem."
+                  name="imagem"
+                  id="imagem"
+                />
+                
+                <button type="submit">Cadastrar</button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- <script>
+      const formulario = document.querySelector('#form-agenda')
+      formulario.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        console.log(formulario.getElementsByTagName("dia")[0].dataset.dia[0])
+      })
+    </script> -->
+  </body>
+</html>
