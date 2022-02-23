@@ -146,7 +146,7 @@ App.post("/agendas", (req, res) => {
         dia: diaAgenda[i],
         entrada: entradaAgenda[i],
         saida: saidaAgenda[i],
-      }
+      },
     });
     agenda
       .save()
@@ -155,7 +155,6 @@ App.post("/agendas", (req, res) => {
       })
       .catch((err) => console.log(err));
   }
-
 });
 
 App.get("/agendas/staff/:id", (req, res) => {
@@ -170,13 +169,14 @@ App.get("/agendas/staff/:id", (req, res) => {
     });
 });
 App.get("/agendas", (req, res) => {
-    Agenda.find().populate("staff")
+  Agenda.find()
+    .populate("staff")
     .then((result) => {
-        res.send(result);
-      })
-      .catch((err) => {
-        res.render("404", { title: "Page not found" });
-      });
+      res.send(result);
+    })
+    .catch((err) => {
+      res.render("404", { title: "Page not found" });
+    });
 });
 App.get("/agendas/:id", (req, res) => {});
 App.delete("/agendas/:id", (req, res) => {});
@@ -334,7 +334,7 @@ App.post("/staff", (req, res) => {
   staff
     .save()
     .then((result) => {
-      res.redirect('/staff')
+      res.redirect("/staff");
     })
     .catch((err) => console.log(err));
 });
@@ -417,17 +417,43 @@ App.post("/productoservico", (req, res) => {
 
 /* ---------- MARCACAO ---------- */
 const Marcacao = require("./models/marcacao");
+
+
 App.get("/marcacoes/new", (req, res) => {
-  res.render("marcacao/form_cadastro_marcacao");
-})
+  
+  let staff = new Staff()
+  let cliente = new Cliente()
+  let productoServico = new ProductoServico() 
+  Staff.find().populate("conta").then((result) =>{ 
+    staff = result
+  })
+
+  Cliente.find().populate("conta").then((result) => {
+    cliente = result;
+  })
+  
+  ProductoServico.find().then((result) => {
+    productoServico = result;
+    res.render("marcacao/form_cadastro_marcacao", {
+      staffs: staff,
+       clientes: cliente,
+      productosServicos: productoServico 
+    }); 
+  })
+   
+});
 
 
 
 App.get("/marcacoes", (req, res) => {
-  Conta.find()
-    .sort({ createdAt: -1 })
+  Marcacao.find()
+  
+  .populate('staff')
+  .populate('cliente')
+    .populate('productoServico')
     .then((result) => {
-      res.render("conta/table_list_conta", { contas: result });
+      
+       res.render("marcacao/table_lista_marcacao", { marcacoes: result }); 
     })
     .catch((err) => console.log(err));
 });
@@ -444,11 +470,11 @@ App.get("/marcacoes/:id", (req, res) => {
 
 //Post Conta
 App.post("/marcacoes", (req, res) => {
-  const conta = new Conta(req.body);
-  conta
+  const marcacao = new Marcacao(req.body);
+  marcacao
     .save()
     .then((result) => {
-      res.redirect("/contas");
+      res.redirect('/marcacoes');
     })
     .catch((err) => {
       console.log(err);

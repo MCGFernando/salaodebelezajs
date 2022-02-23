@@ -7,7 +7,7 @@ const marcacaoSchema = new Schema({
     agenda : {type:Schema.Types.ObjectId, ref:'Agenda'},
     productoServico : {type:Schema.Types.ObjectId, ref:'ProductoServico', required:true},
     dataMarcacao : {type:String, required:true},
-    hora : {type:String, required:true},
+    horaMarcacao : {type:String, required:true},
     estado : {type:Boolean, default:true}
 })
 

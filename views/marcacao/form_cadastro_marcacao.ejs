@@ -21,7 +21,7 @@
             <form
               class="form-container"
               id="form-agenda"
-              action="/agendas"
+              action="/marcacoes"
               method="post"
             >
               <div
@@ -38,40 +38,57 @@
               </div>
   
               <div class="container">
-                <label for="nome">Nome Funcionario</label>
-                <select name="" id="">
-                  <option value=""></option>
+                <label for="staff">Nome Funcionario</label>
+                <select name="staff" id="staff">
+                  <% if (staffs.length > 0){%> 
+                    <option value="-1" disabled selected>Selecione o Funcionario</option>
+                    <% staffs.forEach(staff=>{ %>
+                    <option value="<%= staff._id %>"><%= staff.conta.nome %></option>
+                    <% }) %>
+                   <% } else { %>
+                      <option disabled>Não há funcionarios para mostrar</option>
+                    <% } %>
                 </select>
   
-                <label for="email">Producto / Serviço</label>
-                <select name="" id="">
-                  <option value=""></option>
+                <label for="productoServico">Producto / Serviço</label>
+                <select name="productoServico" id="productoServico">
+                  <% if (productosServicos.length > 0){%> 
+                    <option value="" disabled selected>Selecione o Producto</option>
+                    <% productosServicos.forEach(productoServico=>{ %>
+                    <option value="<%= productoServico._id %>"><%= productoServico.productoServico %></option>
+                    <% }) %> 
+                  <% } else { %>
+                      <option disabled>Não há productos para mostrar</option>
+                    <% } %>
                 </select>
 
-                <label for="funcao">Cliente</label>
-                <input
-                  type="text"
-                  placeholder="Digite a Função."
-                  name="funcao"
-                  id="funcao"
-                  value=""
-                  readonly
-                />
+                <label for="cliente">Cliente</label>
+                <select name="cliente" id="cliente">
+                  <% if (clientes.length > 0){%> 
+                    <option value="" disabled selected>Selecione o Cliente</option>
+                    <% clientes.forEach(cliente=>{ %>
+                    <option value="<%= cliente._id %>"><%= cliente.conta.nome %></option>
+                    <% }) %> 
+                  <% } else { %>
+                      <option disabled>Não há clientes para mostrar</option>
+                    <% } %>
+                </select>
+
                 <!-- Default data Today -->
-                <label for="imagem">Data</label>
+                <label for="dataMarcacao">Data</label>
                 <input
                   type="date"
                   placeholder="Selecione a Imagem."
-                  name="imagem"
-                  id="imagem"
+                  name="dataMarcacao"
+                  id="dataMarcacao"
                 />
                 <!-- Default time Now -->
-                <label for="imagem">Hora</label>
+                <label for="horaMarcacao">Hora</label>
                 <input
                   type="time"
                   placeholder="Selecione a Imagem."
-                  name="imagem"
-                  id="imagem"
+                  name="horaMarcacao"
+                  id="horaMarcacao"
                 />
                 
                 <button type="submit">Cadastrar</button>
