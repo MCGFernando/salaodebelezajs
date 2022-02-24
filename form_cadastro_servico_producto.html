@@ -5,118 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      * {
-        padding: 0;
+      *,
+      *::after,
+      *::before {
+        font-family: inherit;
+        box-sizing: border-box;
+      }
+      body {
         margin: 0;
-        box-sizing: border-box;
-        font-family: sans-serif;
-        letter-spacing: 1px;
-      }
+        font-family: "Work Sans", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 300;
+        background-color: rgb(54, 112, 199);
+        color: #f4f4f4;
 
-      .flex-container {
-        display: flex;
+        display: grid;
+        grid: "header header header header" auto
+              ". sidebar content ." auto /
+              1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
       }
-      .head {
-        border: 1px solid black;
-        height: 55px;
-        display: flex;
-        align-items: center;
-      }
-      .flex-column {
-        border: 1px solid black;
-        width: 100vw;
-        height: 100vh;
-      }
-      .menu-container {
-        min-width: 20%;
-        max-height: 100vh;
-        border: 1px solid red;
-        background-color: #2a265f;
-      }
-      .menu-logo {
-        display: flex;
-        align-items: center;
-        height: 55px;
-        border: 1px solid green;
-      }
-      .menu-item {
-        display: flex;
-        align-items: center;
-        min-width: 100%;
-        min-height: 45px;
-        color: #dddddd;
-        margin-top: 16px;
-      }
-      .menu-item a{
-        color: #dddddd;
-        text-decoration: none;
-      }
-      .svg {
-        padding: 3px;
-      }
-      .card {
-        /* border: 1px solid violet; */
-        margin: 3% auto 2% auto;
-        max-width: 95%;
-        box-shadow: 0 10px 10px rgb(0 0 0 / 20%);
-      }
-      label {
-        color: #2a265f;
-        opacity: 0.8;
-      }
-
-      input,
-      select {
-        display: block;
-        min-width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-      }
-
-      button {
-        background-color: #2a265f;
-        border-radius: 10px;
-        color: #fff;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        letter-spacing: 1px;
-      }
-
-      button:hover {
-        opacity: 0.8;
-      }
-
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        background-color: white;
-        width: 80%;
-      }
-
-      td,
-      th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-
-      .table {
-        display: block;
-      }
-      .table-header {
-      }
-      .row {
-        display: block;
-      }
-      .cell {
-        display: inline-block;
-        border: 1px solid #dddddd;
-      }
+      .title{grid-area: header;}
+      .menu{grid-area: sidebar;}
+      .main{grid-area: content;}
     </style>
     <link
       rel="stylesheet"
@@ -125,129 +35,34 @@
   </head>
 
   <body>
-    <div class="flex-container">
-      <section class="menu-container">
-        <nav class="menu">
-          <div class="menu-logo svg">
-            <i class="fi fi-rr-list" style="color: black"></i>
-          </div>
-          <!-- Lista Menu -->
-          <div class="menu-item">
-            <div class="menu-icon svg"><i class="fa fa-user"></i></div>
-            <div class="menu-link"><a href="" data-link-1="">Perfil</a></div>
-          </div>
-
-          <div class="menu-item">
-            <div class="menu-icon svg"><i class="fa fa-history"></i></div>
-            <div class="menu-link"><a href="" data-link-1="">Histórico</a></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-icon svg"><i class="fa fa-user"></i></div>
-            <div class="menu-link">
-              <a href="" data-link-1="">Categorias</a>
-            </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-icon svg"><i class="fa fa-user"></i></div>
-            <div class="menu-link"><a href="" data-link-1="">Serviços</a></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-icon svg"><i class="fa fa-user"></i></div>
-            <div class="menu-link"><a href="" data-link-1="">Productos</a></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-icon svg"><i class="fa fa-user"></i></div>
-            <div class="menu-link"><a href="" data-link-1="">Staff</a></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-icon svg"><i class="fa fa-user"></i></div>
-            <div class="menu-link"><a href="" data-link-1="">Marcações</a></div>
-            <div class="menu-sub-item" style="display: none">
-              <ul>
-                <li><a href="">Novo</a></li>
-                <li><a href="">Ver</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </section>
-
-      <div class="flex-column container">
-        <header class="head">
-          <h2>Formulário de Cadastro</h2>
-        </header>
-        <main class="content">
-          <div class="card">
-            <form>
-              <label>labe 1</label>
-              <input type="text" />
-              <label>labe 1</label>
-              <input type="text" />
-              <label>labe 1</label>
-              <input type="text" />
-              <label>labe 1</label>
-              <input type="text" />
-              <button>OK</button>
-            </form>
-          </div>
-
-          <div class="card">
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Dia</th>
-                  <th>Entrada</th>
-                  <th>Saida</th>
-                  <th>Estado</th>
-                  <th>Note</th>
-                  <th>Acção</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- <% if (agendas.length > 0){%> <% agendas.forEach(agenda=>{ %> -->
-                <tr>
-                  <td>
-                    <input data-index="0" name="btSelectItem" type="checkbox" />
-                  </td>
-                  <td><%= agendas%></td>
-                  <td><%= agendas%></td>
-                  <td><%= agendas%></td>
-                  <td><%= agendas%></td>
-                  <td>
-                    <a class="marcar" data-doc="<%= cliente._id%>">Marcar</a>
-                  </td>
-                </tr>
-                <!-- <% }) %> <% } else { %>
-                <tr>
-                  <td>Não há clientes a mostrar</td>
-                </tr>
-                <% } %> -->
-              </tbody>
-            </table>
-          </div>
-
-          <div class="card">
-            <div class="table">
-              <div class="row">
-                <div class="cell">Mike</div>
-                <div class="cell">36 years</div>
-                <div class="cell">Architect</div>
-              </div>
-              <div class="row">
-                <div class="cell">Sunil</div>
-                <div class="cell">45 years</div>
-                <div class="cell">Vice President</div>
-              </div>
-              <div class="row">
-                <div class="cell">Jason</div>
-                <div class="cell">27 years</div>
-                <div class="cell">Junior Developer</div>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
+    <header class="title">
+      <h1>Barbearia Bla Bla Bla</h1>
+    </header>
+    <section class="menu">
+      <h2 class="menu-titla">Menu</h2>
+      <ul class="menu-list">
+        <li class="active-menu-list"><a href="">Menu 1</a></li>
+        <li><a href="">Menu 2</a></li>
+        <li><a href="">Menu 3</a></li>
+        <li><a href="">Menu 4</a></li>
+        <li><a href="">Menu 5</a></li>
+      </ul>
+      <button class="menu-btn">Sair</button>
+    </section>
+    <main class="main">
+      <form action="" class="form-container">
+        <h2 class="form-haedar">Formulario de Cadastro</h2>
+        <label for=""></label>
+        <input type="text">
+        <label for=""></label>
+        <input type="text">
+        <label for=""></label>
+        <input type="text">
+        <div class="form-btn-container">
+          <button>Cadastrar</button>
+          <button>Limpar</button>
+        </div>
+      </form>
+    </main>
   </body>
 </html>
