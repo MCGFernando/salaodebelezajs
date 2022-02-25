@@ -11,34 +11,17 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="flex-container">
-      <%- include('../partials/sidebar.ejs') %>
-
-      <div class="flex-column container">
-        <%- include('../partials/head.ejs') %>
-        <main class="content">
-          <div class="card">
-            <form
-              class="form-container"
-              id="form-agenda"
-              action="/marcacoes"
-              method="post"
-            >
-              <div
-                class="image-container"
-                style="display: flex; justify-content: center; margin-top: 15px"
-              >
-                <img
-                  src="/vector-g60ff9bea0_640.png"
-                  alt="Avatar"
-                  class="avatar"
-                  width="150"
-                  height="200"
-                />
-              </div>
-  
-              <div class="container">
-                <label for="staff">Nome Funcionario</label>
+    <%- include('../partials/head.ejs') %>
+     <%- include('../partials/sidebar.ejs') %>
+    <main class="main">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Formulario de Cadastro</h2>
+        </div>
+        <div class="card-body">
+          <form action="/marcacoes" method="post" class="form-container">
+            <div class="form-group">
+              <label for="staff">Nome Funcionario</label>
                 <select name="staff" id="staff">
                   <% if (staffs.length > 0){%> 
                     <option value="-1" disabled selected>Selecione o Funcionario</option>
@@ -49,8 +32,9 @@
                       <option disabled>Não há funcionarios para mostrar</option>
                     <% } %>
                 </select>
-  
-                <label for="productoServico">Producto / Serviço</label>
+            </div>
+            <div class="form-group">
+              <label for="productoServico">Producto / Serviço</label>
                 <select name="productoServico" id="productoServico">
                   <% if (productosServicos.length > 0){%> 
                     <option value="" disabled selected>Selecione o Producto</option>
@@ -61,8 +45,9 @@
                       <option disabled>Não há productos para mostrar</option>
                     <% } %>
                 </select>
-
-                <label for="cliente">Cliente</label>
+            </div>
+            <div class="form-group">
+              <label for="cliente">Cliente</label>
                 <select name="cliente" id="cliente">
                   <% if (clientes.length > 0){%> 
                     <option value="" disabled selected>Selecione o Cliente</option>
@@ -73,38 +58,34 @@
                       <option disabled>Não há clientes para mostrar</option>
                     <% } %>
                 </select>
-
-                <!-- Default data Today -->
-                <label for="dataMarcacao">Data</label>
-                <input
-                  type="date"
-                  placeholder="Selecione a Imagem."
-                  name="dataMarcacao"
-                  id="dataMarcacao"
-                />
-                <!-- Default time Now -->
-                <label for="horaMarcacao">Hora</label>
-                <input
-                  type="time"
-                  placeholder="Selecione a Imagem."
-                  name="horaMarcacao"
-                  id="horaMarcacao"
-                />
-                
-                <button type="submit">Cadastrar</button>
-              </div>
-            </form>
-          </div>
-        </main>
+            </div>
+            <div class="form-group">
+               <!-- Default data Today -->
+               <label for="dataMarcacao">Data</label>
+               <input
+                 type="date"
+                 placeholder="Selecione a Imagem."
+                 name="dataMarcacao"
+                 id="dataMarcacao"
+               />
+            </div>
+            <div class="form-group">
+               <!-- Default time Now -->
+               <label for="horaMarcacao">Hora</label>
+               <input
+                 type="time"
+                 placeholder="Selecione a Imagem."
+                 name="horaMarcacao"
+                 id="horaMarcacao"
+               />
+            </div>
+            <div class="form-btn-container">
+              <button class="btn btn-submit">Cadastrar</button>
+              <button class="btn btn-reset">Limpar</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-
-    <!-- <script>
-      const formulario = document.querySelector('#form-agenda')
-      formulario.addEventListener('submit',(e)=>{
-        e.preventDefault()
-        console.log(formulario.getElementsByTagName("dia")[0].dataset.dia[0])
-      })
-    </script> -->
+    </main>
   </body>
 </html>

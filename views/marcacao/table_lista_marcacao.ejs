@@ -11,7 +11,33 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="flex-container">
+
+
+    <%- include('../partials/sidebar.ejs') %> <%-
+    include('../partials/head.ejs') %>
+    <main class="main">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Listagem - Categorias</h2>
+        </div>
+        <div class="card-body">
+          <div class="pesquisa">
+            <input type="search" placeholder="Pesquise aqui..." />
+          </div>
+
+          <div class="list-group">
+            <% if (marcacoes.length > 0){%> <% marcacoes.forEach(marcacao=>{ %>
+            <a href="#">marcacao.cliente.conta.nome</a>
+            <p><%= marcacao.dataMarcacao %></p>
+            <p><%= marcacao.horaMarcacao %></p>
+            <% }) %> <% } else { %>
+            <p>Não há marcações para mostrar</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- <div class="flex-container">
       <%- include('../partials/sidebar.ejs') %>
 
       <div class="flex-column container">
@@ -60,6 +86,6 @@
           </div>
         </main>
       </div>
-    </div>
+    </div> -->
   </body>
 </html>

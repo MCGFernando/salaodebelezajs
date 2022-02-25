@@ -11,7 +11,70 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="flex-container">
+    <%- include('../partials/head.ejs') %>
+    <%- include('../partials/sidebar.ejs') %>
+    <main class="main">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Formulario de Cadastro</h2>
+        </div>
+        <div class="card-body">
+          <form action="" class="form-container">
+            <div class="form-group">
+            </div>
+            <label for="nome">Nome Funcionario</label>
+                <input
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  value="<%= staffAgenda.conta.nome %>"
+                  data-idConta=""
+                  readonly
+                />
+  
+                <label for="telefone">Telefone</label>
+                <input
+                  type="text"
+                  placeholder="Digite seu telefone."
+                  name="telefone"
+                  id="telefone"
+                  value="<%= staffAgenda.conta.telefone %>"
+                  required
+                />
+  
+                <label for="email">E-mail</label>
+                <input
+                  type="text"
+                  placeholder="Digite seu e-mail..."
+                  name="email"
+                  id="email"
+                  value="<%= staffAgenda.conta.email %>"
+                  required
+                />
+  
+                <label for="funcao">Função</label>
+                <input
+                  type="text"
+                  placeholder="Digite a Função."
+                  name="funcao"
+                  id="funcao"
+                  value="<%= staffAgenda.funcao %>"
+                  required
+                />
+                <label for="imagem">Imagem</label>
+                <input
+                  type="text"
+                  placeholder="Selecione a Imagem."
+                  name="imagem"
+                  id="imagem"
+                />
+          </form>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- <div class="flex-container">
       <%- include('../partials/sidebar.ejs') %>
 
       <div class="flex-column container">
@@ -155,7 +218,7 @@
           </div>
         </main>
       </div>
-    </div>
+    </div> -->
 
     <!-- <script>
       const formulario = document.querySelector('#form-agenda')

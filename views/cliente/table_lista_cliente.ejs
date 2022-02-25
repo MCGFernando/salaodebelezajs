@@ -11,6 +11,30 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include('../partials/sidebar.ejs') %> <%-
+    include('../partials/head.ejs') %>
+    <main class="main">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Listagem - Categorias</h2>
+        </div>
+        <div class="card-body">
+          <div class="pesquisa">
+            <input type="search" placeholder="Pesquise aqui..." />
+          </div>
+
+          <div class="list-group">
+            <% if (clientes.length > 0){%> <% clientes.forEach(cliente=>{ %>
+            <a href="#"><%= cliente.conta.nome%></a>
+            <% }) %> <% } else { %>
+            <p>Não há clientes a mostrar</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 
     <div class="flex-container">
       <%- include('../partials/sidebar.ejs') %>
 
@@ -67,7 +91,7 @@
           </div>
         </main>
       </div>
-    </div>
+    </div> -->
     <script>
       const agendar = document.querySelector("a.marcar");
       agendar.addEventListener("click", (e) => {
