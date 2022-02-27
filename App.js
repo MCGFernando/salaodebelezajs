@@ -4,6 +4,8 @@ const directory = __dirname;
 //requireing express module
 const express = require("express");
 const port = 3000;
+const categoriaRoutes = require('./routes/categoriaRoutes')
+const productoServicoRoutes = require('./routes/productoServicoRoutes')
 //Creating an Express App
 const App = express();
 
@@ -87,47 +89,11 @@ App.put("/contas/:id", (req, res) => {});
 
 /* ---------- FIM CATEGORIA ---------- */
 const Categoria = require("./models/categoria");
-App.get("/categorias", (req, res) => {
-  Categoria.find()
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      res.render("categoria/table_lista_categoria", { categorias: result });
-    })
-    .catch((err) => console.log(err));
-});
-
-App.get("/categorias/new", (req, res) => {
-  res.render("categoria/form_cadastro_categoria");
-});
-
-App.get("/categorias/:id", (req, res) => {
-  const id = req.params.id;
-  Categoria.findById(id)
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      res.render("categoria/details", { categoria: result });
-    })
-    .catch((err) => console.log(err));
-});
-
-//Post Categoria
-App.post("/categorias", (req, res) => {
-  const categoria = new Categoria(req.body);
-  categoria
-    .save()
-    .then((result) => {
-      res.redirect("/categorias");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-App.delete("/categorias/:id", (req, res) => {});
-
-App.put("/categorias/:id", (req, res) => {});
-
+App.use('/categorias',categoriaRoutes)
 /* ---------- FIM CATEGORIA ---------- */
+
+
+
 /* ---------- AGENDA ---------- */
 const Agenda = require("./models/agenda");
 
@@ -378,41 +344,8 @@ App.put("/staff/:id", (req, res) => {});
 /* ---------- FIM STAFF ---------- */
 
 /* ---------- FIM PRODUCTO SERVICO ---------- */
-const ProductoServico = require("./models/productoServico");
-const Endereco = require("./models/endereco");
-const StaffAgenda = require("./models/satffagenda");
 const { result } = require("lodash");
-App.get("/productoservico", (req, res) => {
-  ProductoServico.find()
-    .sort({ createdAt: -1 })
-    .populate("categoria")
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => console.log(err));
-});
-
-App.get("/productoservico/new", (req, res) => {
-  Categoria.find()
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      res.render("productoservico/form_cadastro_productoservico", {
-        categorias: result,
-      });
-    })
-    .catch((err) => console.log(err));
-});
-
-App.post("/productoservico", (req, res) => {
-  const productoservico = new ProductoServico(req.body);
-  productoservico
-    .save()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => console.log(err));
-});
-
+App.use('/productoservico', productoServicoRoutes)
 /* ---------- FIM PRODUCTO SERVICO ---------- */
 
 /* ---------- MARCACAO ---------- */
