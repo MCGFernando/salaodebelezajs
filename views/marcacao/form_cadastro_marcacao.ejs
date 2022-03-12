@@ -3,89 +3,83 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/mystyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
   </head>
   <body>
-    <%- include('../partials/head.ejs') %>
-     <%- include('../partials/sidebar.ejs') %>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Formulario de Cadastro</h2>
+    <%- include('../partials/sidebar.ejs') %> 
+    <%- include('../partials/header.ejs') %>
+
+    <div class="container">
+      <form action="/marcacoes" method="post" class="form-container">
+        <div class="form-group">
+          <label for="staff">Nome Funcionario</label>
+          <select name="staff" id="staff">
+            <% if (staffs.length > 0){%>
+            <option value="-1" disabled selected>
+              Selecione o Funcionario
+            </option>
+            <% staffs.forEach(staff=>{ %>
+            <option value="<%= staff._id %>"><%= staff.conta.nome %></option>
+            <% }) %> <% } else { %>
+            <option disabled>Não há funcionarios para mostrar</option>
+            <% } %>
+          </select>
         </div>
-        <div class="card-body">
-          <form action="/marcacoes" method="post" class="form-container">
-            <div class="form-group">
-              <label for="staff">Nome Funcionario</label>
-                <select name="staff" id="staff">
-                  <% if (staffs.length > 0){%> 
-                    <option value="-1" disabled selected>Selecione o Funcionario</option>
-                    <% staffs.forEach(staff=>{ %>
-                    <option value="<%= staff._id %>"><%= staff.conta.nome %></option>
-                    <% }) %>
-                   <% } else { %>
-                      <option disabled>Não há funcionarios para mostrar</option>
-                    <% } %>
-                </select>
-            </div>
-            <div class="form-group">
-              <label for="productoServico">Producto / Serviço</label>
-                <select name="productoServico" id="productoServico">
-                  <% if (productosServicos.length > 0){%> 
-                    <option value="" disabled selected>Selecione o Producto</option>
-                    <% productosServicos.forEach(productoServico=>{ %>
-                    <option value="<%= productoServico._id %>"><%= productoServico.productoServico %></option>
-                    <% }) %> 
-                  <% } else { %>
-                      <option disabled>Não há productos para mostrar</option>
-                    <% } %>
-                </select>
-            </div>
-            <div class="form-group">
-              <label for="cliente">Cliente</label>
-                <select name="cliente" id="cliente">
-                  <% if (clientes.length > 0){%> 
-                    <option value="" disabled selected>Selecione o Cliente</option>
-                    <% clientes.forEach(cliente=>{ %>
-                    <option value="<%= cliente._id %>"><%= cliente.conta.nome %></option>
-                    <% }) %> 
-                  <% } else { %>
-                      <option disabled>Não há clientes para mostrar</option>
-                    <% } %>
-                </select>
-            </div>
-            <div class="form-group">
-               <!-- Default data Today -->
-               <label for="dataMarcacao">Data</label>
-               <input
-                 type="date"
-                 placeholder="Selecione a Imagem."
-                 name="dataMarcacao"
-                 id="dataMarcacao"
-               />
-            </div>
-            <div class="form-group">
-               <!-- Default time Now -->
-               <label for="horaMarcacao">Hora</label>
-               <input
-                 type="time"
-                 placeholder="Selecione a Imagem."
-                 name="horaMarcacao"
-                 id="horaMarcacao"
-               />
-            </div>
-            <div class="form-btn-container">
-              <button class="btn btn-submit">Cadastrar</button>
-              <button class="btn btn-reset">Limpar</button>
-            </div>
-          </form>
+        <div class="form-group">
+          <label for="productoServico">Producto / Serviço</label>
+          <select name="productoServico" id="productoServico">
+            <% if (productosServicos.length > 0){%>
+            <option value="" disabled selected>Selecione o Producto</option>
+            <% productosServicos.forEach(productoServico=>{ %>
+            <option value="<%= productoServico._id %>">
+              <%= productoServico.productoServico %>
+            </option>
+            <% }) %> <% } else { %>
+            <option disabled>Não há productos para mostrar</option>
+            <% } %>
+          </select>
         </div>
-      </div>
-    </main>
+        <div class="form-group">
+          <label for="cliente">Cliente</label>
+          <select name="cliente" id="cliente">
+            <% if (clientes.length > 0){%>
+            <option value="" disabled selected>Selecione o Cliente</option>
+            <% clientes.forEach(cliente=>{ %>
+            <option value="<%= cliente._id %>">
+              <%= cliente.conta.nome %>
+            </option>
+            <% }) %> <% } else { %>
+            <option disabled>Não há clientes para mostrar</option>
+            <% } %>
+          </select>
+        </div>
+        <div class="form-group">
+          <!-- Default data Today -->
+          <label for="dataMarcacao">Data</label>
+          <input
+            type="date"
+            placeholder="Selecione a Imagem."
+            name="dataMarcacao"
+            id="dataMarcacao"
+          />
+        </div>
+        <div class="form-group">
+          <!-- Default time Now -->
+          <label for="horaMarcacao">Hora</label>
+          <input
+            type="time"
+            placeholder="Selecione a Imagem."
+            name="horaMarcacao"
+            id="horaMarcacao"
+          />
+        </div>
+        <div class="form-btn-container">
+          <input type="button" value="Cadastrar">
+          <input type="reset" value="Limpar">
+        </div>
+      </form>
+    </div>
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>

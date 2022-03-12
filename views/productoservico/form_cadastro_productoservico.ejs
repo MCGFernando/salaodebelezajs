@@ -3,108 +3,83 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/mystyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
   </head>
   <body>
-    <%- include('../partials/head.ejs') %>
-     <%- include('../partials/sidebar.ejs') %>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Formulario de Cadastro</h2>
+    <%- include('../partials/sidebar.ejs') %> <%-
+    include('../partials/header.ejs') %>
+    <div class="container">
+      <form action="/productoservico" method="post" class="form-container">
+        <div class="form-group">
+          <label for="categoria">Categoria</label>
+          <select name="categoria" id="categoria" required>
+            <% if (categorias.length > 0){%>
+            <option value="0" disabled>Selecione a Categoria</option>
+            <% categorias.forEach(categoria=>{ %>
+            <option value="<%=categoria._id %>">
+              <%= categoria.categoria %>
+            </option>
+            <% }) %> <% } else { %>
+            <option value="0" disabled>Sem Categorias disponíveis</option>
+            <% } %>
+          </select>
         </div>
-        <div class="card-body">
-          <form action="/productoservico" method="post" class="form-container">
-            <div class="form-group">
-              <label for="categoria">Categoria</label>
-              <select name="categoria" id="categoria" required>
-                <% if (categorias.length > 0){%>
-                <option value="0" disabled>Selecione a Categoria</option>
-                <% categorias.forEach(categoria=>{ %>
-                <option value="<%=categoria._id %>">
-                  <%= categoria.categoria %>
-                </option>
-                <% }) %> <% } else { %>
-                <option value="0" disabled>Sem Categorias disponíveis</option>
-                <% } %>
-              </select>
-            </div>
 
-            <div class="form-group">
-              <label for="productoServico">Producto / Serviço</label>
-                <input
-                  type="text"
-                  id="productoServico"
-                  name="productoServico"
-                  required
-                />
-            </div>
-            <div class="form-group">
-              <label for="descricao">Descrição</label>
-                <input type="text" id="descricao" name="descricao" />
-            </div>
-            <div class="form-group">
-              <label for="quantidade">Quantidade</label>
-                <input
-                  type="number"
-                  id="quantidade"
-                  name="quantidade"
-                  min="1"
-                />
-            </div>
-            <div class="form-group">
-              <label for="valorCompra">Valor de Compra</label>
-                <input
-                  type="number"
-                  id="valorCompra"
-                  name="valorCompra"
-                  step="0.01"
-                />
-            </div>
-            <div class="form-group">
-              <label for="desconto">Desconto</label>
-                <input
-                  type="number"
-                  id="desconto"
-                  name="desconto"
-                  step="0.01"
-                />
-            </div>
-            <div class="form-group">
-              <label for="iva">IVA</label>
-                <input type="number" id="iva" name="iva" step="0.01" />
-            </div>            
-            <div class="form-group">
-              <label for="taxaLucro">Taxa de Lucro</label>
-                <input
-                  type="number"
-                  id="taxaLucro"
-                  name="taxaLucro"
-                  step="0.01"
-                />
-            </div>            
-            <div class="form-group">
-              <label for="valorVenda">Valor de Venda</label>
-                <input
-                  type="number"
-                  id="valorVenda"
-                  name="valorVenda"
-                  step="0.01"
-                  required
-                />
-            </div>            
-            <div class="form-btn-container">
-              <button class="btn btn-submit">Cadastrar</button>
-              <button class="btn btn-reset">Limpar</button>
-            </div>
-          </form>
+        <div class="form-group">
+          <label for="productoServico">Producto / Serviço</label>
+          <input
+            type="text"
+            id="productoServico"
+            name="productoServico"
+            required
+          />
         </div>
-      </div>
-    </main>
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <input type="text" id="descricao" name="descricao" />
+        </div>
+        <div class="form-group">
+          <label for="quantidade">Quantidade</label>
+          <input type="number" id="quantidade" name="quantidade" min="1" />
+        </div>
+        <div class="form-group">
+          <label for="valorCompra">Valor de Compra</label>
+          <input
+            type="number"
+            id="valorCompra"
+            name="valorCompra"
+            step="0.01"
+          />
+        </div>
+        <div class="form-group">
+          <label for="desconto">Desconto</label>
+          <input type="number" id="desconto" name="desconto" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label for="iva">IVA</label>
+          <input type="number" id="iva" name="iva" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label for="taxaLucro">Taxa de Lucro</label>
+          <input type="number" id="taxaLucro" name="taxaLucro" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label for="valorVenda">Valor de Venda</label>
+          <input
+            type="number"
+            id="valorVenda"
+            name="valorVenda"
+            step="0.01"
+            required
+          />
+        </div>
+        <div class="form-btn-container">
+          <input type="button" value="Cadastrar">
+          <input type="reset" value="Limpar">
+        </div>
+      </form>
+    </div>
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>

@@ -3,189 +3,133 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      *,
-      *::after,
-      *::before {
-        font-family: inherit;
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: "Work Sans", sans-serif;
-        font-size: 1.5rem;
-        font-weight: 300;
-        background-color: rgb(54, 112, 199);
-        color: #f4f4f4;
-
-        display: grid;
-        grid:
-          "header header header header" auto
-          ". sidebar content ." auto /
-          1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
-      }
-      .title {
-        grid-area: header;
-        text-align: center;
-        color: rgba(0, 0, 0, 0.3);
-        font-size: 1.5em;
-        font-weight: 900;
-        letter-spacing: 2px;
-        margin: -0.3em 0 0.5em;
-      }
-      .menu {
-        grid-area: sidebar;
-      }
-      .menu-list {
-        font-size: 1.2rem;
-        line-height: 1.7;
-        list-style: circle;
-
-        padding-left: 1.1em;
-      }
-      .menu-list li {
-        margin-top: 7px;
-        margin-right: 17px;
-      }
-      .menu-list li a {
-        text-decoration: none;
-        color: currentColor;
-        /* font-size: 1.2rem;
-        font-weight: 100; */
-      }
-
-      .menu-list li:hover {
-        background-image: linear-gradient(
-          45deg,
-          rgba(0, 0, 0, 0.3),
-          rgb(54, 112, 199)
-        );
-        opacity: 0.6;
-        border-bottom: 1px dotted currentColor;
-      }
-      .active-menu-list {
-        font-weight: 700;
-      }
-      .main {
-        grid-area: content;
-      }
-
-      .card {
-        background-color: #f4f4f4;
-        color: #333;
-      }
-
-      .card-header {
-        padding: 0.2rem;
-        background: #e4e4e4;
-        display: flex;
-        align-items: center;
-      }
-
-      .card-body {
-        padding: 0.5rem;
-       
-      }
-
-      .form-container {
-        min-width: 100%;
-        position: relative;
-      }
-
-      .form-container input {
-        background-color: transparent;
-        border: 0;
-        border-bottom: 1px solid rgba(51, 51, 51, 0.4);
-      }
-
-      .form-container label {
-        font-size: medium;
-      }
-
-      .form-group {
-        margin-top: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 17px;
-      }
-
-      .form-btn-container {
-        min-width: 100%;
-        display: flex;
-        justify-content: space-between;
-        position: absolute;
-        left: 0;
-        bottom: -65px;
-      }
-
-      .btn{
-        border: 0;
-        line-height: 1.5rem;
-        width: 95px;
-        background-color: transparent;
-        cursor: pointer;
-        color: #f4f4f4;
-        letter-spacing: 2px;
-      }
-      .btn-submit{
-        border-bottom: 2px solid rgba(0, 230, 84, 0.618);
-      }
-      .btn-reset{
-        border-bottom: 2px solid #333;
-      }
-      .btn-delete{}
-    </style>
+    <!-- <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script> -->
+    
     <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link rel="stylesheet" href="public/css/mystyle.css" />
+    <title>Document</title>
   </head>
-
   <body>
-    <header class="title">
-      <h1>Barbearia Bla Bla Bla</h1>
-    </header>
-    <section class="menu">
-      <h2 class="menu-titla">Menu</h2>
-      <ul class="menu-list">
-        <li class="active-menu-list"><a href="">Menu 1</a></li>
-        <li><a href="">Menu 2</a></li>
-        <li><a href="">Menu 3</a></li>
-        <li><a href="">Menu 4</a></li>
-        <li><a href="">Menu 5</a></li>
-      </ul>
-      <button class="menu-btn">Sair</button>
-    </section>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Formulario de Cadastro</h2>
-        </div>
-        <div class="card-body">
-          <form action="" class="form-container">
-            <div class="form-group">
-              <label for="">Label 1</label>
-              <input type="text" />
-            </div>
-
-            <div class="form-group">
-              <label for="">Label 1</label>
-              <input type="text" />
-            </div>
-
-            <div class="form-group">
-              <label for="">Label 1</label>
-              <input type="text" />
-            </div>
-
-            <div class="form-btn-container">
-              <button class="btn btn-submit">Cadastrar</button>
-              <button class="btn btn-reset">Limpar</button>
-            </div>
-          </form>
-        </div>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxl-c-plus-plus"></i>
+        <span class="logo-name">Code With Maro</span>
       </div>
-    </main>
+
+      <ul class="nav-links">
+        <li>
+          <a href="#">
+            <i class="bx bx-user"></i>
+            <span class="link-name">Perfil</span>
+          </a>
+        </li>
+
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class="bx bx-collection"></i>
+              <span class="link-name">Categoria</span>
+            </a>
+            <i class="bx bxs-chevron-down arrow"></i>
+          </div>
+          <ul class="sub-menu hide">
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Serviços</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class="bx bxs-face"></i>
+              <span class="link-name">Clientes</span>
+            </a>
+            <i class="bx bxs-chevron-down arrow"></i>
+          </div>
+          <ul class="sub-menu hide">
+            <li><a href="#">Cadastrar</a></li>
+            <li><a href="#">Consultar</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class="bx bx-group"></i>
+              <span class="link-name">Staff</span>
+            </a>
+            <i class="bx bxs-chevron-down arrow"></i>
+          </div>
+          <ul class="sub-menu hide">
+            <li><a href="#">Cadastrar</a></li>
+            <li><a href="#">Consultar</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="bx bx-history"></i>
+            <span class="link-name">Histórico</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="bx bx-book"></i>
+            <span class="link-name">Agendas</span>
+          </a>
+        </li>
+
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class='bx bx-credit-card'></i>
+              <span class="link-name">Comendas</span>
+            </a>
+            <i class="bx bxs-chevron-down arrow"></i>
+          </div>
+          <ul class="sub-menu hide">
+            <li><a href="#">Nova</a></li>
+            <li><a href="#">Consultar</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+   <section class="main-container ">
+      <header class="main-header">
+        <i class="bx bx-menu"></i>
+      </header>
+      <main class="main-content container">
+        <div class="card">
+          <div class="container">
+            <form action="">
+              <label for="">Label 1</label>
+              <input type="text" placeholder="Digite algo">
+              <label for="">Label 1</label>
+              <select name="" id="">
+                <option value="">opt</option>
+              </select>
+              <input type="time" name="" id="">
+              <input type="button" value="Cadastrar">
+              <input type="reset" value="Cadastrar">
+            </form>
+          </div>
+          
+        </div>
+      </main>
+   </section>
+
+   <script>
+     const navLinks = document.querySelector('.nav-links')
+     
+     
+     navLinks.addEventListener('click', e => {
+
+      console.log(e.target.parentElement.parentElement.classList.conteins('icon-link'))
+     })
+   </script>
   </body>
 </html>

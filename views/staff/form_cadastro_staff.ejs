@@ -3,35 +3,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/mystyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
   </head>
   <body>
-    <%- include('../partials/head.ejs') %>
+    
      <%- include('../partials/sidebar.ejs') %>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Formulario de Cadastro</h2>
-        </div>
-        <div
-        class="image-container"
-        style="display: flex; justify-content: center; margin-top: 15px"
-      >
-        <img
-          src="/vector-g60ff9bea0_640.png"
-          alt="Avatar"
-          class="avatar"
-          width="150"
-          height="200"
-        />
-      </div>
-        <div class="card-body">
-          <form action="/staff" method="post" class="form-container">
+     <%- include('../partials/header.ejs') %>
+     <div class="container">
+          <form action="/staff" method="post">
             <div class="form-group">
               <label for="nome">Nome Completo</label>
                 <input
@@ -154,12 +134,11 @@
             </div>
             <input type="hidden" name="staff" id="staff" value="true" />
             <div class="form-btn-container">
-              <button class="btn btn-submit">Cadastrar</button>
-              <button class="btn btn-reset">Limpar</button>
+              <input type="button" value="Cadastrar">
+              <input type="reset" value="Limpar">
             </div>
           </form>
         </div>
-      </div>
-    </main>
+        <%- include('../partials/footer.ejs') %>
   </body>
 </html>

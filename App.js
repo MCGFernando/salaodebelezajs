@@ -6,6 +6,7 @@ const express = require("express");
 const port = 3000;
 const categoriaRoutes = require('./routes/categoriaRoutes')
 const productoServicoRoutes = require('./routes/productoServicoRoutes')
+const marcacaoRoutes = require('./routes/marcacaoRoutes')
 //Creating an Express App
 const App = express();
 
@@ -350,72 +351,6 @@ App.use('/productoservico', productoServicoRoutes)
 
 /* ---------- MARCACAO ---------- */
 const Marcacao = require("./models/marcacao");
-
-
-App.get("/marcacoes/new", (req, res) => {
-  
-  let staff = new Staff()
-  let cliente = new Cliente()
-  let productoServico = new ProductoServico() 
-  Staff.find().populate("conta").then((result) =>{ 
-    staff = result
-  })
-
-  Cliente.find().populate("conta").then((result) => {
-    cliente = result;
-  })
-  
-  ProductoServico.find().then((result) => {
-    productoServico = result;
-    res.render("marcacao/form_cadastro_marcacao", {
-      staffs: staff,
-       clientes: cliente,
-      productosServicos: productoServico 
-    }); 
-  })
-   
-});
-
-
-
-App.get("/marcacoes", (req, res) => {
-  Marcacao.find()
-  
-  .populate('staff')
-  .populate('cliente')
-    .populate('productoServico')
-    .then((result) => {
-      
-       res.render("marcacao/table_lista_marcacao", { marcacoes: result }); 
-    })
-    .catch((err) => console.log(err));
-});
-
-App.get("/marcacoes/:id", (req, res) => {
-  const id = req.params.id;
-  Conta.findById(id)
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      res.render("conta/detail_conta", { conta: result });
-    })
-    .catch((err) => console.log(err));
-});
-
-//Post Conta
-App.post("/marcacoes", (req, res) => {
-  const marcacao = new Marcacao(req.body);
-  marcacao
-    .save()
-    .then((result) => {
-      res.redirect('/marcacoes');
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-App.put("/marcacoes/delete/:id", (req, res) => {});
-
-App.put("/marcacoes/:id", (req, res) => {});
+App.use('/marcacoes', marcacaoRoutes)
 
 /* ---------- FIM MARCACAO ---------- */

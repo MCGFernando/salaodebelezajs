@@ -1,0 +1,17 @@
+</div>
+</main>
+</section>
+<script>
+    const navLinks = document.querySelector('.nav-links')
+    const subMenu = document.querySelector('.sub-menu')
+
+    navLinks.addEventListener('click', e => {
+        if (e.target.classList.length>0){
+            if(e.target.classList.contains('arrow')){
+                e.target.parentElement.nextElementSibling.classList.toggle('hide')
+            }
+        }else{
+            console.log('Drop')
+        }
+    })
+</script>

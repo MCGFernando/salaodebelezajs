@@ -3,223 +3,67 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/mystyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
   </head>
   <body>
-    <%- include('../partials/head.ejs') %>
     <%- include('../partials/sidebar.ejs') %>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Formulario de Cadastro</h2>
+    <%- include('../partials/header.ejs') %>
+    <div class="container">
+      <form action="">
+        <div class="form-group">
         </div>
-        <div class="card-body">
-          <form action="" class="form-container">
-            <div class="form-group">
-            </div>
-            <label for="nome">Nome Funcionario</label>
-                <input
-                  type="text"
-                  name="nome"
-                  id="nome"
-                  value="<%= staffAgenda.conta.nome %>"
-                  data-idConta=""
-                  readonly
-                />
-  
-                <label for="telefone">Telefone</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu telefone."
-                  name="telefone"
-                  id="telefone"
-                  value="<%= staffAgenda.conta.telefone %>"
-                  required
-                />
-  
-                <label for="email">E-mail</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu e-mail..."
-                  name="email"
-                  id="email"
-                  value="<%= staffAgenda.conta.email %>"
-                  required
-                />
-  
-                <label for="funcao">Função</label>
-                <input
-                  type="text"
-                  placeholder="Digite a Função."
-                  name="funcao"
-                  id="funcao"
-                  value="<%= staffAgenda.funcao %>"
-                  required
-                />
-                <label for="imagem">Imagem</label>
-                <input
-                  type="text"
-                  placeholder="Selecione a Imagem."
-                  name="imagem"
-                  id="imagem"
-                />
-          </form>
-        </div>
-      </div>
-    </main>
+        <label for="nome">Nome Funcionario</label>
+            <input
+              type="text"
+              name="nome"
+              id="nome"
+              value="<%= staffAgenda.conta.nome %>"
+              data-idConta=""
+              readonly
+            />
 
+            <label for="telefone">Telefone</label>
+            <input
+              type="text"
+              placeholder="Digite seu telefone."
+              name="telefone"
+              id="telefone"
+              value="<%= staffAgenda.conta.telefone %>"
+              required
+            />
 
-    <!-- <div class="flex-container">
-      <%- include('../partials/sidebar.ejs') %>
+            <label for="email">E-mail</label>
+            <input
+              type="text"
+              placeholder="Digite seu e-mail..."
+              name="email"
+              id="email"
+              value="<%= staffAgenda.conta.email %>"
+              required
+            />
 
-      <div class="flex-column container">
-        <%- include('../partials/head.ejs') %>
-        <main class="content">
-          <div class="card">
-            <form
-              class="form-container"
-              id="form-agenda"
-              action="/agendas"
-              method="post"
-            >
-              <div
-                class="image-container"
-                style="display: flex; justify-content: center; margin-top: 15px"
-              >
-                <img
-                  src="/vector-g60ff9bea0_640.png"
-                  alt="Avatar"
-                  class="avatar"
-                  width="150"
-                  height="200"
-                />
-              </div>
-  
-              <div class="container">
-                <label for="nome">Nome Funcionario</label>
-                <input
-                  type="text"
-                  name="nome"
-                  id="nome"
-                  value="<%= staffAgenda.conta.nome %>"
-                  data-idConta=""
-                  readonly
-                />
-  
-                <label for="telefone">Telefone</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu telefone."
-                  name="telefone"
-                  id="telefone"
-                  value="<%= staffAgenda.conta.telefone %>"
-                  required
-                />
-  
-                <label for="email">E-mail</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu e-mail..."
-                  name="email"
-                  id="email"
-                  value="<%= staffAgenda.conta.email %>"
-                  required
-                />
-  
-                <label for="funcao">Função</label>
-                <input
-                  type="text"
-                  placeholder="Digite a Função."
-                  name="funcao"
-                  id="funcao"
-                  value="<%= staffAgenda.funcao %>"
-                  required
-                />
-                <label for="imagem">Imagem</label>
-                <input
-                  type="text"
-                  placeholder="Selecione a Imagem."
-                  name="imagem"
-                  id="imagem"
-                />
-                <hr />
-                <div>
-                  <div>
-                    <label for="">Domingo</label
-                    ><input type="checkbox" name="dia[]" value="1" />
-                    <label for="">Entrada</label
-                    ><input type="time" name="entrada[]" id="" />
-                    <label for="">Saída</label
-                    ><input type="time" name="saida[]" id="" />
-                  </div>
-                  <div>
-                    <label for="">Segunda</label
-                    ><input type="checkbox" name="dia[]" value="2" />
-                    <label for="">Entrada</label
-                    ><input type="time" name="entrada[]" id="" />
-                    <label for="">Saída</label
-                    ><input type="time" name="saida[]" id="" />
-                  </div>
-                  <div>
-                    <label for="">Terça</label
-                    ><input type="checkbox" name="dia[]" data-dia="3" />
-                    <label for="">Entrada</label
-                    ><input type="time" name="entrada[]" id="" />
-                    <label for="">Saída</label
-                    ><input type="time" name="saida[]" id="" />
-                  </div>
-                  <div>
-                    <label for="">Quarta</label
-                    ><input type="checkbox" name="dia[]" data-dia="4" />
-                    <label for="">Entrada</label
-                    ><input type="time" name="entrada[]" id="" />
-                    <label for="">Saída</label
-                    ><input type="time" name="saida[]" id="" />
-                  </div>
-                  <div>
-                    <label for="">Quinta</label
-                    ><input type="checkbox" name="dia[]" data-dia="5" />
-                    <label for="">Entrada</label
-                    ><input type="time" name="entrada[]" id="" />
-                    <label for="">Saída</label
-                    ><input type="time" name="saida[]" id="" />
-                  </div>
-                  <div>
-                    <label for="">Sexta</label
-                    ><input type="checkbox" name="dia[]" data-dia="6" />
-                    <label for="">Entrada</label
-                    ><input type="time" name="entrada[]" id="" />
-                    <label for="">Saída</label
-                    ><input type="time" name="saida[]" id="" />
-                  </div>
-                  <div>
-                    <label for="">Sabado</label
-                    ><input type="checkbox" name="dia[]" data-dia="7" />
-                    <label for="">Entrada</label
-                    ><input type="time" name="entrada[]" id="" />
-                    <label for="">Saída</label
-                    ><input type="time" name="saida[]" id="" />
-                  </div>
-                </div>
-                <input
-                  type="hidden"
-                  name="staff"
-                  id="staff"
-                  value="<%=staffAgenda._id%>"
-                />
-                <button type="submit">Cadastrar</button>
-              </div>
-            </form>
-          </div>
-        </main>
-      </div>
-    </div> -->
+            <label for="funcao">Função</label>
+            <input
+              type="text"
+              placeholder="Digite a Função."
+              name="funcao"
+              id="funcao"
+              value="<%= staffAgenda.funcao %>"
+              required
+            />
+            <label for="imagem">Imagem</label>
+            <input
+              type="text"
+              placeholder="Selecione a Imagem."
+              name="imagem"
+              id="imagem"
+            />
+      </form>
+    </div>
+    <%- include('../partials/footer.ejs') %>
 
+   
     <!-- <script>
       const formulario = document.querySelector('#form-agenda')
       formulario.addEventListener('submit',(e)=>{

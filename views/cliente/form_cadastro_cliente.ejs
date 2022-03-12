@@ -3,141 +3,131 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/mystyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
   </head>
   <body>
-    <%- include('../partials/head.ejs') %>
-     <%- include('../partials/sidebar.ejs') %>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Formulario de Cadastro</h2>
+    <%- include('../partials/sidebar.ejs') %>
+    <%- include('../partials/header.ejs') %>
+     <div class="container">
+      <form action="/clientes" method="post">
+        <div class="form-group">
+          <label for="nome">Nome Completo</label>
+            <input
+              type="text"
+              placeholder="Digite seu nome..."
+              name="nome"
+              id="nome"
+              required
+            />
         </div>
-        <div class="card-body">
-          <form action="/clientes" method="post" class="form-container">
-            <div class="form-group">
-              <label for="nome">Nome Completo</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu nome..."
-                  name="nome"
-                  id="nome"
-                  required
-                />
-            </div>
 
-            <div class="form-group">
-              <label for="telefone">Telefone</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu telefone."
-                  name="telefone"
-                  id="telefone"
-                  required
-                />
-            </div>
-            <div class="form-group">
-              <label for="email">E-mail</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu e-mail..."
-                  name="email"
-                  id="email"
-                  required
-                />
-            </div>
-            <div class="form-group">
-              <label for="senha">Senha</label>
-                <input
-                  type="password"
-                  placeholder="Digite sua senha..."
-                  name="senha"
-                  id="senha"
-                  required
-                />
-            </div>
-            <div class="form-group">
-              <label for="confirma">Confirmar</label>
-                <input
-                  type="password"
-                  placeholder="Confirme sua senha..."
-                  name="confirma"
-                  id="confirma"
-                  required
-                />
-            </div>
-            <hr>
-            <div class="form-group">
-              <label for="genero">Gênero</label>
-                <select name="genero" id="genero">
-                  <option value="0" disabled>Selecione o Gênero</option>
-                  <option value="M">Masculino</option>
-                  <option value="F">Feminino</option>
-                </select>
-            </div>
-            <div class="form-group">
-              <label for="nascimento">Nascimento</label>
-                <input type="date" name="nascimento" id="nascimento" />
-            </div>
-            <div class="form-group">
-              <label for="desconto">Desconto</label>
-                <input
-                  type="number"
-                  placeholder="Digite o Desconto."
-                  name="desconto"
-                  id="desconto"
-                />
-            </div>
-            <div class="form-group">
-              <label for="imagem">Imagem</label>
-                <input
-                  type="text"
-                  placeholder="Selecione a Imagem."
-                  name="imagem"
-                  id="imagem"
-                />
-            </div>
-            <hr>
-            <div class="form-group">
-              <label for="endereco">Endereço</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu telefone."
-                  name="endereco"
-                  id="endereco"
-                />
-            </div>
-            <div class="form-group">
-              <label for="cidade">Cidade</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu telefone."
-                  name="cidade"
-                  id="cidade"
-                />
-            </div>
-            <div class="form-group">
-              <label for="bairro">Bairro</label>
-                <input
-                  type="text"
-                  placeholder="Digite seu telefone."
-                  name="bairro"
-                  id="bairro"
-                />
-            </div>
-            <input type="hidden" name="cliente" id="cliente" value="true" />
-            <div class="form-btn-container">
-              <button class="btn btn-submit">Cadastrar</button>
-              <button class="btn btn-reset">Limpar</button>
-            </div>
-          </form>
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+            <input
+              type="text"
+              placeholder="Digite seu telefone."
+              name="telefone"
+              id="telefone"
+              required
+            />
         </div>
-      </div>
-    </main>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+            <input
+              type="text"
+              placeholder="Digite seu e-mail..."
+              name="email"
+              id="email"
+              required
+            />
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha</label>
+            <input
+              type="password"
+              placeholder="Digite sua senha..."
+              name="senha"
+              id="senha"
+              required
+            />
+        </div>
+        <div class="form-group">
+          <label for="confirma">Confirmar</label>
+            <input
+              type="password"
+              placeholder="Confirme sua senha..."
+              name="confirma"
+              id="confirma"
+              required
+            />
+        </div>
+        <hr>
+        <div class="form-group">
+          <label for="genero">Gênero</label>
+            <select name="genero" id="genero">
+              <option value="0" disabled>Selecione o Gênero</option>
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="nascimento">Nascimento</label>
+            <input type="date" name="nascimento" id="nascimento" />
+        </div>
+        <div class="form-group">
+          <label for="desconto">Desconto</label>
+            <input
+              type="number"
+              placeholder="Digite o Desconto."
+              name="desconto"
+              id="desconto"
+            />
+        </div>
+        <div class="form-group">
+          <label for="imagem">Imagem</label>
+            <input
+              type="text"
+              placeholder="Selecione a Imagem."
+              name="imagem"
+              id="imagem"
+            />
+        </div>
+        <hr>
+        <div class="form-group">
+          <label for="endereco">Endereço</label>
+            <input
+              type="text"
+              placeholder="Digite seu telefone."
+              name="endereco"
+              id="endereco"
+            />
+        </div>
+        <div class="form-group">
+          <label for="cidade">Cidade</label>
+            <input
+              type="text"
+              placeholder="Digite seu telefone."
+              name="cidade"
+              id="cidade"
+            />
+        </div>
+        <div class="form-group">
+          <label for="bairro">Bairro</label>
+            <input
+              type="text"
+              placeholder="Digite seu telefone."
+              name="bairro"
+              id="bairro"
+            />
+        </div>
+        <input type="hidden" name="cliente" id="cliente" value="true" />
+        <div class="form-btn-container">
+          <input type="button" value="Cadastrar">
+          <input type="reset" value="Limpar">
+        </div>
+      </form>
+     </div>
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>

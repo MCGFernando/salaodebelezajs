@@ -3,44 +3,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/mystyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
   </head>
   <body>
-    <%- include('../partials/head.ejs') %>
-     <%- include('../partials/sidebar.ejs') %>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Formulário de Cadastro - Categorias</h2>
+    
+    <%- include('../partials/sidebar.ejs') %>
+    <%- include('../partials/header.ejs') %>
+    <div class="container">
+      <form action="" class="form-container">
+        <div class="form-group">
+          <label for="sequenciaCategoria">Sequência</label>
+          <input
+            type="text"
+            id="sequenciaCategoria"
+            name="sequenciaCategoria"
+            required
+          />
         </div>
-        <div class="card-body">
-          <form action="" class="form-container">
-            <div class="form-group">
-              <label for="sequenciaCategoria">Sequência</label>
-              <input
-                type="text"
-                id="sequenciaCategoria"
-                name="sequenciaCategoria"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="categoria">Categoria</label>
-              <input type="text" id="categoria" name="categoria" required />
-            </div>
+        <div class="form-group">
+          <label for="categoria">Categoria</label>
+          <input type="text" id="categoria" name="categoria" required />
+        </div>
 
-            <div class="form-btn-container">
-              <button class="btn btn-submit">Cadastrar</button>
-              <button type="reset" class="btn btn-reset">Limpar</button>
-            </div>
-          </form>
+        <div class="form-btn-container">
+          <input type="button" value="Cadastrar">
+          <input type="reset" value="Limpar">
         </div>
-      </div>
-    </main>
+      </form>
+    </div>
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>
