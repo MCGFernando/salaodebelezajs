@@ -12,9 +12,9 @@
 
     <div class="container">
       <form action="/marcacoes" method="post" class="form-container">
-        <div class="form-group">
+        <div class="input-container">
           <label for="staff">Nome Funcionario</label>
-          <select name="staff" id="staff">
+          <select name="staff" id="staff" class="input-field">
             <% if (staffs.length > 0){%>
             <option value="-1" disabled selected>
               Selecione o Funcionario
@@ -26,9 +26,9 @@
             <% } %>
           </select>
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <label for="productoServico">Producto / Serviço</label>
-          <select name="productoServico" id="productoServico">
+          <select name="productoServico" id="productoServico" class="input-field">
             <% if (productosServicos.length > 0){%>
             <option value="" disabled selected>Selecione o Producto</option>
             <% productosServicos.forEach(productoServico=>{ %>
@@ -40,9 +40,9 @@
             <% } %>
           </select>
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <label for="cliente">Cliente</label>
-          <select name="cliente" id="cliente">
+          <select name="cliente" id="cliente" class="input-field">
             <% if (clientes.length > 0){%>
             <option value="" disabled selected>Selecione o Cliente</option>
             <% clientes.forEach(cliente=>{ %>
@@ -54,7 +54,7 @@
             <% } %>
           </select>
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <!-- Default data Today -->
           <label for="dataMarcacao">Data</label>
           <input
@@ -62,9 +62,10 @@
             placeholder="Selecione a Imagem."
             name="dataMarcacao"
             id="dataMarcacao"
+            class="input-field"
           />
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <!-- Default time Now -->
           <label for="horaMarcacao">Hora</label>
           <input
@@ -72,6 +73,7 @@
             placeholder="Selecione a Imagem."
             name="horaMarcacao"
             id="horaMarcacao"
+            class="input-field"
           />
         </div>
         <div class="form-btn-container">

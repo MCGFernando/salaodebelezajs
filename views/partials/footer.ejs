@@ -4,6 +4,9 @@
 <script>
     const navLinks = document.querySelector('.nav-links')
     const subMenu = document.querySelector('.sub-menu')
+    const touggleMenu = document.querySelector('.touggle-menu')
+    const sidebar = document.querySelector('.sidebar')
+    const mainContainer = document.querySelector('.main-container')
 
     navLinks.addEventListener('click', e => {
         if (e.target.classList.length>0){
@@ -13,5 +16,17 @@
         }else{
             console.log('Drop')
         }
+    })
+
+    touggleMenu.addEventListener('click', (e) => {
+        
+        if (sidebar.classList.contains('hide')){
+            mainContainer.style.left = '260px'
+            mainContainer.style.width = 'calc(100% - 260px)'
+        }else{
+            mainContainer.style.left = '0px'
+            mainContainer.style.width = '100%'
+        }
+        sidebar.classList.toggle('hide')
     })
 </script>

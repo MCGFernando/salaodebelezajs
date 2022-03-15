@@ -11,9 +11,9 @@
     include('../partials/header.ejs') %>
     <div class="container">
       <form action="/productoservico" method="post" class="form-container">
-        <div class="form-group">
+        <div class="input-container">
           <label for="categoria">Categoria</label>
-          <select name="categoria" id="categoria" required>
+          <select name="categoria" id="categoria" required class="input-field">
             <% if (categorias.length > 0){%>
             <option value="0" disabled>Selecione a Categoria</option>
             <% categorias.forEach(categoria=>{ %>
@@ -26,45 +26,49 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="input-container">
           <label for="productoServico">Producto / Serviço</label>
           <input
             type="text"
             id="productoServico"
             name="productoServico"
             required
+            class="input-field"
+            placeholder="Digite o producto ou serviço"
           />
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <label for="descricao">Descrição</label>
-          <input type="text" id="descricao" name="descricao" />
+          <input type="text" id="descricao" name="descricao" class="input-field" placeholder="Digite uma descrição"/>
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <label for="quantidade">Quantidade</label>
-          <input type="number" id="quantidade" name="quantidade" min="1" />
+          <input type="number" id="quantidade" name="quantidade" min="1" class="input-field" placeholder="Digite a quantidade"/>
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <label for="valorCompra">Valor de Compra</label>
           <input
             type="number"
             id="valorCompra"
             name="valorCompra"
             step="0.01"
+            class="input-field"
+            placeholder="Digite o valor de compra"
           />
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <label for="desconto">Desconto</label>
-          <input type="number" id="desconto" name="desconto" step="0.01" />
+          <input type="number" id="desconto" name="desconto" step="0.01" class="input-field" placeholder="Digite o valor do desconto"/>
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <label for="iva">IVA</label>
-          <input type="number" id="iva" name="iva" step="0.01" />
+          <input type="number" id="iva" name="iva" step="0.01" class="input-field" placeholder="Digite o valor do IVA"/>
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <label for="taxaLucro">Taxa de Lucro</label>
-          <input type="number" id="taxaLucro" name="taxaLucro" step="0.01" />
+          <input type="number" id="taxaLucro" name="taxaLucro" step="0.01" class="input-field" placeholder="Digite a taxa de lucro"/>
         </div>
-        <div class="form-group">
+        <div class="input-container">
           <label for="valorVenda">Valor de Venda</label>
           <input
             type="number"
@@ -72,6 +76,8 @@
             name="valorVenda"
             step="0.01"
             required
+            class="input-field"
+            placeholder="Digiteo valor de venda"
           />
         </div>
         <div class="form-btn-container">

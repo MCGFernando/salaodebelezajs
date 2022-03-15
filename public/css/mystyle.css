@@ -145,19 +145,23 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
 }
 
-input[type=text], input[type=email], input[type=password] {
-    border: none;
+input[type=text], 
+input[type=email], 
+input[type=password],
+nput[type=time], input[type=date], input[type=number] {
     width: 100%;
     padding: 16px 20px;
-    border-bottom: 1px solid rgba(17, 16, 29, 0.3);
+    border-radius: 4px;
+    border: 1px solid rgba(17, 16, 29, 0.3);
   }
 
-  input[type=time], input[type=date], input[type=number] {
+  /* input[type=time], input[type=date], input[type=number] {
     border: none;
     width: 50%;
     padding: 16px 20px;
-    border-bottom: 1px solid rgba(17, 16, 29, 0.3);
-  }
+    border-radius: 4px;
+    border: 1px solid rgba(17, 16, 29, 0.3);
+  } */
 
   input[type=button], input[type=submit] {
     background-color: #11101d;
@@ -188,3 +192,27 @@ input[type=text], input[type=email], input[type=password] {
     background-color: #f1f1f1;
   }
 
+  .input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+.input-container label {
+    padding: 10px;
+    background: #11101d;
+    color: white;
+    width: 160px;
+    text-align: center;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+  }
+  
+  .input-field:focus {
+    border: 2px solid #1d1b31;
+  }
