@@ -22,13 +22,32 @@
           title="Digite a categoria"
         />
       </div>
-
+      <%= result%>
+      <table class="display-table">
+        <tr class="header">
+          <th style="width:60%;">Name</th>
+          <th style="width:40%;">Country</th>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Germany</td>
+        </tr>
+        <tr>
+          <td>Berglunds snabbkop</td>
+          <td>Sweden</td>
+        </tr>
+        <tr>
+          <td>Island Trading</td>
+          <td>UK</td>
+        </tr>
+        <tr>
+          <td>Koniglich Essen</td>
+          <td>Germany</td>
+        </tr>
+      </table>
+      
       <ul class="display-list">
-        <% if (categorias.length > 0){%> <% categorias.forEach(categoria=>{%>
-        <li><a href="#"><%= categoria.categoria %></a></li>
-        <% }) %> <% } else { %>
-        <p>Sem Categorias para mostrar</p>
-        <% } %>
+       
       </ul>
     </div>
     <%- include('../partials/footer.ejs') %>

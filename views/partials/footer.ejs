@@ -7,6 +7,9 @@
     const touggleMenu = document.querySelector('.touggle-menu')
     const sidebar = document.querySelector('.sidebar')
     const mainContainer = document.querySelector('.main-container')
+    const pesquisa = document.querySelector('#pesquisa')
+    const displayList = document.querySelector('.display-list')
+    
 
     navLinks.addEventListener('click', e => {
         if (e.target.classList.length>0){
@@ -29,4 +32,21 @@
         }
         sidebar.classList.toggle('hide')
     })
+
+    pesquisa.addEventListener('keyup', (e) => {
+        const searchText = e.target.value
+
+        filterList(searchText)
+    }) 
+
+    const filterList = (term) =>{
+       
+       Array.from(displayList.children)
+       .filter(filtered =>  !filtered.textContent.toLocaleLowerCase().includes(term))
+       .forEach(filtered=> filtered.setAttribute('class','hide'))
+
+       Array.from(displayList.children)
+       .filter(filtered =>  filtered.textContent.toLocaleLowerCase().includes(term))
+       
+}
 </script>

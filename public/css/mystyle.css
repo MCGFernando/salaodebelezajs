@@ -140,15 +140,24 @@
     width: 70%;
     min-width: 750px;
     height: auto;
-    border-radius: 3px;
+    /* border-radius: 16px; */
     background: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+}
+
+.card-header{
+    width: 100%;
+    height: 75px;
+    background: #11101d;
+    font-size: 25px;
+    color: #fff;
+    padding: 7px;
 }
 
 input[type=text], 
 input[type=email], 
 input[type=password],
-nput[type=time], input[type=date], input[type=number] {
+input[type=time], input[type=date], input[type=number] {
     width: 100%;
     padding: 16px 20px;
     border-radius: 4px;
@@ -215,4 +224,66 @@ nput[type=time], input[type=date], input[type=number] {
   
   .input-field:focus {
     border: 2px solid #1d1b31;
+  }
+
+  .input-pesquisa {
+    /* background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #11101d;
+    margin-bottom: 12px; */
+  }
+  
+  .display-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .display-list li a {
+    border: 1px solid #ddd;
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #11101d;
+    display: block
+  }
+  
+  .display-list li a:hover:not(.header) {
+    background-color: rgba(17, 16, 29, 0.4) /* #eee */;
+  }
+
+
+
+.display-table {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+  }
+  
+  .display-table th, .display-table td {
+    text-align: left; /* Left-align text */
+    padding: 12px; /* Add padding */
+  }
+  
+  .display-table tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .display-table tr.header{
+      background: #11101d;
+      color: #fff;
+  }
+  
+  .display-table tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: rgba(17, 16, 29, 0.4);
+    color: #11101d;
   }
