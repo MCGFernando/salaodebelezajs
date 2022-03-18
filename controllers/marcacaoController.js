@@ -98,7 +98,8 @@ const marcacao_list = (req, res) => {
     .populate("cliente")
     .populate("productoServico")
     .then((result) => {
-      res.render("marcacao/table_lista_marcacao", { marcacoes: result });
+      //res.render("marcacao/table_lista_marcacao", { marcacoes: result });
+      res.send(result)
     })
     .catch((err) => console.log(err));
 };

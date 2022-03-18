@@ -1,135 +1,18 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script> -->
-    
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="public/css/mystyle.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="sidebar">
-      <div class="logo-details">
-        <i class="bx bxl-c-plus-plus"></i> 
-        <span class="logo-name">Code With Maro</span>
-      </div>
-
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class="bx bx-user"></i>
-            <span class="link-name">Perfil</span>
-          </a>
-        </li>
-
-        <li>
-          <div class="icon-link">
-            <a href="#">
-              <i class="bx bx-collection"></i>
-              <span class="link-name">Categoria</span>
-            </a>
-            <i class="bx bxs-chevron-down arrow"></i>
-          </div>
-          <ul class="sub-menu hide">
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Serviços</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <div class="icon-link">
-            <a href="#">
-              <i class="bx bxs-face"></i>
-              <span class="link-name">Clientes</span>
-            </a>
-            <i class="bx bxs-chevron-down arrow"></i>
-          </div>
-          <ul class="sub-menu hide">
-            <li><a href="#">Cadastrar</a></li>
-            <li><a href="#">Consultar</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <div class="icon-link">
-            <a href="#">
-              <i class="bx bx-group"></i>
-              <span class="link-name">Staff</span>
-            </a>
-            <i class="bx bxs-chevron-down arrow"></i>
-          </div>
-          <ul class="sub-menu hide">
-            <li><a href="#">Cadastrar</a></li>
-            <li><a href="#">Consultar</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="#">
-            <i class="bx bx-history"></i>
-            <span class="link-name">Histórico</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <i class="bx bx-book"></i>
-            <span class="link-name">Agendas</span>
-          </a>
-        </li>
-
-        <li>
-          <div class="icon-link">
-            <a href="#">
-              <i class='bx bx-credit-card'></i>
-              <span class="link-name">Comendas</span>
-            </a>
-            <i class="bx bxs-chevron-down arrow"></i>
-          </div>
-          <ul class="sub-menu hide">
-            <li><a href="#">Nova</a></li>
-            <li><a href="#">Consultar</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-   <section class="main-container ">
-      <header class="main-header">
-        <i class="bx bx-menu"></i>
-      </header>
-      <main class="main-content container">
-        <div class="card">
-          <div class="container">
-            <form action="">
-              <label for="">Label 1</label>
-              <input type="text" placeholder="Digite algo">
-              <label for="">Label 1</label>
-              <select name="" id="">
-                <option value="">opt</option>
-              </select>
-              <input type="time" name="" id="">
-              <input type="button" value="Cadastrar">
-              <input type="reset" value="Cadastrar">
-            </form>
-          </div>
-          
-        </div>
-      </main>
-   </section>
-
-   <script>
-     const navLinks = document.querySelector('.nav-links')
-     
-     
-     navLinks.addEventListener('click', e => {
-
-      console.log(e.target.parentElement.parentElement.classList.conteins('icon-link'))
-     })
-   </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="mystyle.css">
+  <title>Document</title>
+</head>
+<body>
+  <nav class="nav-wraper"></nav>
+</body>
 </html>

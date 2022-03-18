@@ -3,110 +3,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/mystyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
   </head>
   <body>
     <%- include('../partials/sidebar.ejs') %> <%-
-    include('../partials/head.ejs') %>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Listagem - Categorias</h2>
-        </div>
-        <div class="card-body">
-          <div class="pesquisa">
-            <input type="search" placeholder="Pesquise aqui..." />
-          </div>
-
-          <div class="list-group">
-            <% if (clientes.length > 0){%> <% clientes.forEach(cliente=>{ %>
-            <a href="#"><%= cliente.conta.nome%></a>
-            <% }) %> <% } else { %>
-            <p>Não há clientes a mostrar</p>
-            <% } %>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- 
-    <div class="flex-container">
-      <%- include('../partials/sidebar.ejs') %>
-
-      <div class="flex-column container">
-        <%- include('../partials/head.ejs') %>
-        <main class="content">
-          <div class="card">
-            <table>
-              <tr>
-                <th></th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Desconto</th>
-                <th>Gênero</th>
-                <th>Nascimento</th>
-                <th>Estado</th>
-                <th>Acção</th>
-              </tr>
-              <tr>
-                <th></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-                <th><input type="text" /></th>
-              </tr>
-              <tbody>
-                <% if (clientes.length > 0){%> <% clientes.forEach(cliente=>{ %>
-                <tr>
-                  <td class="bs-checkbox">
-                    <input data-index="0" name="btSelectItem" type="checkbox" />
-                  </td>
-                  <td><%= cliente.conta.nome%></td>
-                  <td><%= cliente.conta.email%></td>
-                  <td><%= cliente.conta.telefone%></td>
-                  <td><%= cliente.desconto%></td>
-                  <td><%= cliente.genero%></td>
-                  <td><%= cliente.nescimento%></td>
-                  <td><%= cliente.estado%></td>
-                  <td>
-                    <a class="marcar" data-doc="<%= cliente._id%>">Marcar</a>
-                  </td>
-                </tr>
-                <% }) %> <% } else { %>
-                <tr>
-                  <td>Não há clientes a mostrar</td>
-                </tr>
-                <% } %>
-              </tbody>
-            </table>
-          </div>
-        </main>
-      </div>
-    </div> -->
-    <script>
-      const agendar = document.querySelector("a.marcar");
-      agendar.addEventListener("click", (e) => {
-        const endpoint = `/marcacoes/clientes/${agendar.dataset.doc}`;
-        console.log(endpoint);
-        window.location.href = endpoint;
-        /* fetch(endpoint, {
-          method: "GET",
-        })
-          .then((response) => response.json())
-          .then((data) => (window.location.href = data.redirect))
-          .catch((err) => {
-            console.log(err);
-          }); */
-      });
-    </script>
+    include('../partials/header.ejs') %>
+    <div class="container">
+      <table class="display-table">
+        <tr class="header">
+          <th>Nome</th>
+          <th>Genero</th>
+          <th>E-mail</th>
+          <th>Telefone</th>
+          <th>Desconto</th>
+          <th>Dt Criado</th>
+          <th>Dt Alterado</th>
+          <th>Estado</th>
+        </tr>
+        <% if (clientes.length > 0){%> <% clientes.forEach(cliente=>{ %>
+        <tr>
+          <td><%= cliente.conta.nome%></td>
+          <td><%= cliente.genero%></td>
+          <td><%= cliente.conta.email%></td>
+          <td><%= cliente.conta.telefone%></td>
+          <td><%= cliente.desconto%></td>
+          <td><%= cliente.createdAt%></td>
+          <td><%= cliente.updatedAt%></td>
+          <td><%= cliente.estado%></td>
+          <% }) %> <% } else { %>
+          <p>Não há clientes a mostrar</p>
+          <% } %>
+        </tr>
+      </table>
+    </div>
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>

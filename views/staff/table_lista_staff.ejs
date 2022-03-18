@@ -3,114 +3,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/mystyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
   </head>
   <body>
-
     <%- include('../partials/sidebar.ejs') %> <%-
-    include('../partials/head.ejs') %>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Listagem - Categorias</h2>
-        </div>
-        <div class="card-body">
-          <div class="pesquisa">
-            <input type="search" placeholder="Pesquise aqui..." />
-          </div>
+    include('../partials/header.ejs') %>
+    <div class="container">
+      <table class="display-table">
+        <tr class="header">
+          <th>Nome</th>
+          <th>Genero</th>
+          <th>E-mail</th>
+          <th>Telefone</th>
+          <th>Funcao</th>
+          <th>Dt Criado</th>
+          <th>Dt Alterado</th>
+          <th>Estado</th>
+        </tr>
+        <% if (staffs.length > 0){%> <% staffs.forEach(staff=>{ %>
+        <tr>
+          <td><%= staff.conta.nome%></td>
+          <td><%= staff.genero%></td>
+          <td><%= staff.conta.email%></td>
+          <td><%= staff.conta.telefone%></td>
+          <td><%= staff.funcao%></td>
+          <td><%= staff.createdAt%></td>
+          <td><%= staff.updatedAt%></td>
+          <td><%= staff.estado%></td>
+          <% }) %> <% } else { %>
+          <p>Não há clientes a mostrar</p>
+          <% } %>
+        </tr>
+      </table>
+    </div>
+    <%- include('../partials/footer.ejs') %>
 
-          <div class="list-group">
-            <% if (staffs.length > 0){%> <% staffs.forEach(staff=>{ %>
-            <a href="#"><%= staff.conta.nome%></a>
-            <% }) %> <% } else { %>
-            <p>Não há clientes a mostrar</p>
-            <% } %>
-          </div>
-        </div>
-      </div>
-    </main>
-
-
-    <!-- <div class="flex-container">
-      <%- include('../partials/sidebar.ejs') %>
-
-      <div class="flex-column container">
-        <%- include('../partials/head.ejs') %>
-        <main class="content">
-          <div class="card">
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Telefone</th>
-                  <th>BI</th>
-                  <th>Gênero</th>
-                  <th>Nascimento</th>
-                  <th>Estado</th>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% if (staffs.length > 0){%> <% staffs.forEach(staff=>{ %>
-                <tr>
-                  <td class="bs-checkbox">
-                    <input data-index="0" name="btSelectItem" type="checkbox" />
-                  </td>
-                  <td><%= staff.conta.nome%></td>
-                  <td><%= staff.conta.email%></td>
-                  <td><%= staff.conta.telefone%></td>
-                  <td><%= staff.bi%></td>
-                  <td><%= staff.genero%></td>
-                  <td><%= staff.nescimento%></td>
-                  <td><%= staff.estado%></td>
-                  <td>
-                    <a class="agendar" data-doc="<%= staff._id%>">Agendar</a>
-                  </td>
-                </tr>
-                <% }) %> <% } else { %>
-                <tr>
-                  <td>Não há pessoal a ser mostrar</td>
-                </tr>
-                <% } %>
-              </tbody>
-            </table>
-          </div>
-        </main>
-      </div>
-    </div> -->
-
-
-    <script>
-      const agendar = document.querySelector("a.agendar");
-      agendar.addEventListener("click", (e) => {
-        const endpoint = `/agendas/staff/${agendar.dataset.doc}`;
-        console.log(endpoint);
-        window.location.href = endpoint;
-        /* fetch(endpoint, {
-          method: "GET",
-        })
-          .then((response) => response.json())
-          .then((data) => (window.location.href = data.redirect))
-          .catch((err) => {
-            console.log(err);
-          }); */
-      });
-    </script>
   </body>
 </html>

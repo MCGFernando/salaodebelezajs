@@ -3,29 +3,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/mystyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <%- include('../partials/head.ejs') %>
     <title>Document</title>
   </head>
   <body>
-
-
     <%- include('../partials/sidebar.ejs') %> <%-
-    include('../partials/head.ejs') %>
-    <main class="main">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Listagem - Categorias</h2>
-        </div>
-        <div class="card-body">
-          <div class="pesquisa">
-            <input type="search" placeholder="Pesquise aqui..." />
-          </div>
-
-          <div class="list-group">
+    include('../partials/header.ejs') %>
+    <div class="container">
+      <table class="display-table">
+        <tr class="header">
+          <th>Nome Cliente</th>
+          <th>Desconto</th>
+          <th>Data</th>
+          <th>Hora</th>
+          <th>Producto / Serviço</th>
+          <th>Staff</th>
+          <th>Estado</th>
+        </tr>
+        <% if (marcacoes.length > 0){%> <% marcacoes.forEach(marcacao=>{ %>
+        <tr>
+          <td><%= marcacao.cliente.conta.nome%></td>
+          <td><%= marcacao.cliente.desconto%></td>
+          <td><%= marcacao.dataMarcacao%></td>
+          <td><%= marcacao.horaMarcacao%></td>
+          <td><%= marcacao.productoservico%></td>
+          <td><%= marcacao.staff.conta.nome%></td>
+          <td><%= marcacao.estado%></td>
+          
+          <% }) %> <% } else { %>
+          <p>Não há clientes a mostrar</p>
+          <% } %>
+        </tr>
+      </table>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    
             <% if (marcacoes.length > 0){%> <% marcacoes.forEach(marcacao=>{ %>
             <a href="#">marcacao.cliente.conta.nome</a>
             <p><%= marcacao.dataMarcacao %></p>
@@ -33,59 +45,6 @@
             <% }) %> <% } else { %>
             <p>Não há marcações para mostrar</p>
             <% } %>
-          </div>
-        </div>
-      </div>
-    </main>
-    <!-- <div class="flex-container">
-      <%- include('../partials/sidebar.ejs') %>
-
-      <div class="flex-column container">
-        <%- include('../partials/head.ejs') %>
-        <main class="content">
-          <div class="card">
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Nome</th>
-                  <th>Data</th>
-                  <th>Hora</th>
-                  <th>Producto</th>
-                  <th>Funcionario</th>
-                  <th>Estado</th>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                  <th><input type="text" /></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% if (marcacoes.length > 0){%> <% marcacoes.forEach(marcacao=>{ %>
-                <tr>
-                    <td></td>
-                  <td><%= marcacao.cliente.conta.nome %></td>
-                  <td><%= marcacao.dataMarcacao %></td>
-                  <td><%= marcacao.horaMarcacao %></td>
-                  <td><%= marcacao.productoServico.productoServico %></td>
-                  <td><%= marcacao.staff.conta.nome %></td>
-                  <td><%= marcacao.estado %></td>
-                </tr>
-                <% }) %> <% } else { %>
-                <tr>
-                  <td>Não há contas para mostrar</td>
-                </tr>
-                <% } %>
-              </tbody>
-            </table>
-          </div>
-        </main>
-      </div>
-    </div> -->
+          
   </body>
 </html>

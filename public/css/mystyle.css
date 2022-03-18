@@ -226,16 +226,16 @@ input[type=time], input[type=date], input[type=number] {
     border: 2px solid #1d1b31;
   }
 
-  .input-pesquisa {
-    /* background-image: url('/css/searchicon.png');
+ /* .input-pesquisa {
+     background-image: url('/css/searchicon.png');
     background-position: 10px 12px;
     background-repeat: no-repeat;
     width: 100%;
     font-size: 16px;
     padding: 12px 20px 12px 40px;
     border: 1px solid #11101d;
-    margin-bottom: 12px; */
-  }
+    margin-bottom: 12px;
+  } */
   
   .display-list {
     list-style-type: none;

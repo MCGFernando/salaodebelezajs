@@ -7,6 +7,9 @@ const port = 3000;
 const categoriaRoutes = require('./routes/categoriaRoutes')
 const productoServicoRoutes = require('./routes/productoServicoRoutes')
 const marcacaoRoutes = require('./routes/marcacaoRoutes')
+const staffRoutes = require('./routes/staffRoutes')
+const clienteRoutes = require('./routes/clienteRoutes')
+const enderecoRoutes = require('./routes/enderecoRoutes')
 //Creating an Express App
 const App = express();
 
@@ -37,15 +40,6 @@ App.get("/", (req, res) => {
 App.get("/contas/new", (req, res) => {
   res.render("conta/form_cadastro_conta");
 });
-
-App.get("/staff/new", (req, res) => {
-  res.render("staff/form_cadastro_staff");
-});
-
-App.get("/clientes/new", (req, res) => {
-  res.render("cliente/form_cadastro_cliente");
-});
-/* ---------- FIM LOGIN ---------- */
 
 /* ---------- CONTA ---------- */
 const Conta = require("./models/conta");
@@ -86,14 +80,8 @@ App.put("/contas/delete/:id", (req, res) => {});
 
 App.put("/contas/:id", (req, res) => {});
 
-/* ---------- FIM CONTA ---------- */
-
-/* ---------- FIM CATEGORIA ---------- */
-const Categoria = require("./models/categoria");
+/* CATEGORIA */
 App.use('/categorias',categoriaRoutes)
-/* ---------- FIM CATEGORIA ---------- */
-
-
 
 /* ---------- AGENDA ---------- */
 const Agenda = require("./models/agenda");
@@ -150,207 +138,20 @@ App.delete("/agendas/:id", (req, res) => {});
 App.put("/agendas/:id", (req, res) => {});
 /* ---------- FIM AGENDA ---------- */
 
-/* ---------- CLIENTE ---------- */
-const Cliente = require("./models/cliente");
+/*  CLIENTE  */
+App.use('/clientes', clienteRoutes)
 
-App.post("/clientes", (req, res) => {
-  const conta = new Conta(req.body);
-
-  conta
-    .save()
-    .then((result) => {
-      console.log("Conta Cadastrada");
-    })
-    .catch((err) => console.log(err));
-
-  const endereco = new Endereco({
-    endereco: req.body.endereco,
-    cidade: req.body.cidade,
-    bairro: req.body.bairro,
-    conta,
-  });
-  endereco
-    .save()
-    .then((result) => {
-      console.log("Endereco Cadastrada");
-    })
-    .catch((err) => console.log(err));
-
-  const cliente = new Cliente({
-    imagem: req.body.imagem,
-    nascimento: req.body.nascimento,
-    genero: req.body.genero,
-    desconto: req.body.desconto,
-    conta,
-  });
-  cliente
-    .save()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => console.log(err));
-});
-
-App.get("/clientes", (req, res) => {
-  Cliente.find()
-    .sort({ createdAt: -1 })
-    .populate("conta")
-    .then((result) => {
-      res.render("cliente/table_lista_cliente", { clientes: result });
-    })
-    .catch((err) => console.log(err));
-});
-
-App.get("/clientes/:id", (req, res) => {
-  const id = req.params.id;
-  Cliente.findById(id)
-    .populate("conta")
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      res.render("404", { title: "Page not found" });
-    });
-});
-
-App.put("/clientes/delete/:id", (req, res) => {});
-
-App.put("/categorias/:id", (req, res) => {});
-
-/* ---------- FIM CLIENTE ---------- */
-
-/* ---------- CONTACTO ---------- */
-const Contacto = require("./models/contacto");
-
-App.post("/contactos", (req, res) => {});
-
-App.get("/contactos", (req, res) => {});
-
-App.get("/contactos/staff", (req, res) => {});
-
-App.get("/contactos/clientes", (req, res) => {});
-
-App.get("/contactos/:id", (req, res) => {});
-
-App.delete("/contactos/:id", (req, res) => {});
-
-App.put("/contactos/:id", (req, res) => {});
-
-/* ---------- FIM CONTACTO ---------- */
 
 /* ---------- ENDERECO ---------- */
-const Endeereco = require("./models/endereco");
-
-App.post("/enderecos", (req, res) => {});
-
-App.get("/enderecos", (req, res) => {
-  Endereco.find()
-    .sort({ createdAt: -1 })
-    .populate("conta")
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => console.log(err));
-});
-
-App.get("/enderecos/staff", (req, res) => {});
-
-App.get("/enderecos/clientes", (req, res) => {});
-
-App.get("/enderecos/:id", (req, res) => {});
-
-App.delete("/enderecos/:id", (req, res) => {});
-
-App.put("/enderecos/:id", (req, res) => {});
-
-/* ---------- FIM ENDERECO ---------- */
+//App.use('', enderecoRoutes)
 
 /* ---------- STAFF ---------- */
-const Staff = require("./models/staff");
+App.use('/staff', staffRoutes)
 
-App.post("/staff", (req, res) => {
-  const conta = new Conta(req.body);
-
-  conta
-    .save()
-    .then((result) => {
-      console.log("Conta Cadastrada");
-    })
-    .catch((err) => console.log(err));
-
-  const endereco = new Endereco({
-    endereco: req.body.endereco,
-    cidade: req.body.cidade,
-    bairro: req.body.bairro,
-    conta,
-  });
-  endereco
-    .save()
-    .then((result) => {
-      console.log("Endereco Cadastrada");
-    })
-    .catch((err) => console.log(err));
-
-  const staff = new Staff({
-    funcao: req.body.funcao,
-    nascimento: req.body.nascimento,
-    genero: req.body.genero,
-    bi: req.body.bi,
-    conta,
-  });
-  staff
-    .save()
-    .then((result) => {
-      res.redirect("/staff");
-    })
-    .catch((err) => console.log(err));
-});
-
-/* async function saveStaff(req){
-    const conta = new Conta(req.body)
-    const staff = new Staff(req.body)
-    const endereco = new Endereco(req.body)
-
-    await conta.save()
-    await endereco.save()
-    await staff.save()
-} */
-
-App.get("/staff", (req, res) => {
-  Staff.find()
-    .sort({ createdAt: -1 })
-    .populate("conta")
-    .then((result) => {
-      res.render("staff/table_lista_staff", { staffs: result });
-    })
-    .catch((err) => console.log(err));
-});
-
-App.get("/staff/:id", (req, res) => {
-  const id = req.params.id;
-  Staff.findById(id)
-    .populate("conta")
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      res.render("404", { title: "Page not found" });
-    });
-});
-
-App.put("/staff/delete/:id", (req, res) => {});
-
-App.put("/staff/:id", (req, res) => {});
-
-/* ---------- FIM STAFF ---------- */
-
-/* ---------- FIM PRODUCTO SERVICO ---------- */
+/* PRODUCTO SERVICO */
 const { result } = require("lodash");
 App.use('/productoservico', productoServicoRoutes)
-/* ---------- FIM PRODUCTO SERVICO ---------- */
 
 /* ---------- MARCACAO ---------- */
-const Marcacao = require("./models/marcacao");
 App.use('/marcacoes', marcacaoRoutes)
 
-/* ---------- FIM MARCACAO ---------- */
