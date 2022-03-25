@@ -23,26 +23,27 @@ const staff_create = (req, res) => {
       console.log("Conta Cadastrada");
     }).catch((err) => console.log(err));
 
-  const endereco = new Endereco({
-    endereco: req.body.endereco,
-    cidade: req.body.cidade,
-    bairro: req.body.bairro,
-    conta,
-  });
-  endereco.save().then((result) => {
-      console.log("Endereco Cadastrada");
-    }).catch((err) => console.log(err));
+  
 
   const staff = new Staff({
-    funcao: req.body.funcao,
-    nascimento: req.body.nascimento,
-    genero: req.body.genero,
-    bi: req.body.bi,
     conta,
+    bi : req.body.bi,
+    genero : req.body.genero,
+    nascimento : req.body.nascimento,
+    imagem : req.body.imagem,
+    funcao : req.body.funcao,
+    estado: req.body.estado,
+    endereco :{
+      endereco: req.body.endereco,
+      cidade: req.body.cidade,
+      bairro: req.body.bairro
+    }
   });
   staff.save().then((result) => {
-      res.redirect("/staff");
+    console.log("Staff Cadastrada");  
+    res.redirect("/staff");
     }).catch((err) => console.log(err));
+
 }
 
 
@@ -60,6 +61,16 @@ const staff_list_id = (req, res) => {
     });
 }
 
+const staff_list_id_controller = (req, res) => {
+  const id = req.params.id;
+  Staff.findById(id).populate('conta').then(result => {
+    res.render('staff/form_edita_staff', {staff : result})
+    //res.send(result)
+  }).catch(err => {
+    console.log(err)
+  })
+}
+
 const staff_delete = (req, res) => {}
 
 const staff_update = (req, res) => {}
@@ -67,6 +78,7 @@ const staff_update = (req, res) => {}
 module.exports = {
     staff_new,
     staff_create,
+    staff_list_id_controller,
     staff_list,
     staff_list_id,
     staff_update,

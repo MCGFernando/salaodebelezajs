@@ -11,25 +11,25 @@
     include('../partials/header.ejs') %>
     <h2>Cadastro de Clientes</h2>
     <div class="row">
-      <form action="/clientes" method="post" class="col s12">
+      <form action="/clientes/update/<%=cliente._id%>" method="post" class="col s12">
         <div class="row">
           <div class="input-field col s12">
             <label for="nome">Nome Completo</label>
-            <input type="text" name="nome" id="nome" required />
+            <input type="text" name="nome" id="nome" value="<%= cliente.conta.nome%>" required />
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s6">
-            <input type="date" name="nascimento" id="nascimento" />
+            <input type="date" name="nascimento" id="nascimento" value="<%= cliente.nascimeno%>"/>
             <label for="nascimento">Nascimento</label>
           </div>
 
           <div class="input-field col s6">
             <select name="genero" id="genero">
               <option value="0" disabled>Selecione o Gênero</option>
-              <option value="M">Masculino</option>
-              <option value="F">Feminino</option>
+              <option value="M" <%= cliente.genero==='M' ? 'Selected' : ''%>>Masculino</option>
+              <option value="F" <%= cliente.genero==='F' ? 'Selected' : ''%>>Feminino</option>
             </select>
             <label for="genero">Gênero</label>
           </div>
@@ -38,56 +38,56 @@
         <div class="row">
           <div class="input-field col s12">
             <label for="desconto">Desconto</label>
-            <input type="number" name="desconto" id="desconto" />
+            <input type="number" name="desconto" id="desconto" value="<%= cliente.desconto%>"/>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
             <label for="telefone">Telefone</label>
-            <input type="text" name="telefone" id="telefone" required />
+            <input type="text" name="telefone" id="telefone" value="<%= cliente.conta.telefone%>" required />
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
             <label for="email">E-mail</label>
-            <input type="text" name="email" id="email" required />
+            <input type="text" name="email" id="email" value="<%= cliente.conta.email%>" required />
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s6">
             <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senha" required />
+            <input type="password" name="senha" id="senha" value="<%= cliente.conta.senha%>" required />
           </div>
           <div class="input-field col s6">
             <label for="confirma">Confirmar</label>
-            <input type="password" name="confirma" id="confirma" required />
+            <input type="password" name="confirma" id="confirma" value="<%= cliente.conta.senha%>" required />
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
             <label for="imagem">Imagem</label>
-            <input type="text" name="imagem" id="imagem" />
+            <input type="text" name="imagem" id="imagem" value="<%= cliente.imagem%>"/>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
             <label for="endereco">Endereço</label>
-            <input type="text" name="endereco" id="endereco" />
+            <input type="text" name="endereco" id="endereco" value="<%= cliente.endereco.endereco%>" />
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
             <label for="cidade">Cidade</label>
-            <input type="text" name="cidade" id="cidade" />
+            <input type="text" name="cidade" id="cidade" value="<%= cliente.endereco.cidade%>"/>
           </div>
           <div class="input-field col s6">
             <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" id="bairro" />
+            <input type="text" name="bairro" id="bairro" value="<%= cliente.endereco.bairro%>" />
           </div>
         </div>
 

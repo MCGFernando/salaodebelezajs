@@ -10,6 +10,7 @@ const marcacaoRoutes = require('./routes/marcacaoRoutes')
 const staffRoutes = require('./routes/staffRoutes')
 const clienteRoutes = require('./routes/clienteRoutes')
 const enderecoRoutes = require('./routes/enderecoRoutes')
+const vendaRoutes = require('./routes/vendaRoutes')
 //Creating an Express App
 const App = express();
 
@@ -155,3 +156,4 @@ App.use('/productoservico', productoServicoRoutes)
 /* ---------- MARCACAO ---------- */
 App.use('/marcacoes', marcacaoRoutes)
 
+App.use('/vendas', vendaRoutes)

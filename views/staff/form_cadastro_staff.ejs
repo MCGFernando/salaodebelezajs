@@ -10,6 +10,7 @@
     <%- include('../partials/sidebar.ejs') %> <%-
     include('../partials/header.ejs') %>
     <h2>Cadastro Staff</h2>
+    
     <div class="row">
       <form action="/staff" method="post" class="col s12">
         <div class="row">
@@ -22,11 +23,11 @@
         <div class="row">
           <div class="input-field col s6">
             <label for="bi">BI</label>
-            <input type="text" name="bi" id="bi" required />
+            <input type="text" name="bi" id="bi" required/>
           </div>
           <div class="input-field col s6">
             <label for="funcao">Função</label>
-            <input type="text" name="funcao" id="funcao" required />
+            <input type="text" name="funcao" id="funcao" required/>
           </div>
         </div>
 
@@ -66,14 +67,14 @@
           </div>
           <div class="input-field col s6">
             <label for="confirma">Confirmar</label>
-            <input type="password" name="confirma" id="confirma" required />
+            <input type="password" name="confirma" id="confirma" required/>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
             <label for="imagem">Imagem</label>
-            <input type="text" name="imagem" id="imagem" />
+            <input type="text" name="imagem" />
           </div>
         </div>
 
@@ -81,24 +82,24 @@
         <div class="row">
           <div class="input-field col s12">
             <label for="endereco">Endereço</label>
-            <input type="text" name="endereco" id="endereco" />
+            <input type="text" name="endereco" id="endereco"/>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s6">
             <label for="cidade">Cidade</label>
-            <input type="text" name="cidade" id="cidade" />
+            <input type="text" name="cidade" id="cidade"/>
           </div>
           <div class="input-field col s6">
             <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" id="bairro" />
+            <input type="text" name="bairro" id="bairro"/>
           </div>
         </div>
 
         <input type="hidden" name="staff" id="staff" value="true" />
 
-        <input type="button" value="Cadastrar" />
+        <input type="submit" value="Cadastrar" />
         <input type="reset" value="Limpar" />
       </form>
     </div>

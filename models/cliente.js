@@ -8,6 +8,11 @@ const clienteSchema = new Schema({
     imagem : {type:String, required:false},
     desconto: {type:Number, required:false},
     estado : {type:Boolean, default:true},
+    endereco : {
+        endereco : {type:String, required:false},
+        cidade : {type:String, required:false},
+        bairro : {type:String, required:false}
+    }
 },{timestamps:true})
 
 const Cliente = mongoose.model('Cliente', clienteSchema)
