@@ -7,38 +7,26 @@
     <title>Document</title>
   </head>
   <body>
-    
     <%- include('../partials/sidebar.ejs') %>
     <%- include('../partials/header.ejs') %>
-    <div class="card-header">
-      <h2>Formulário de Cadastro - </h2>
-    </div>
-    <div class="container">
-      <form action="" >
-        <div class="input-container">
-          <label for="sequenciaCategoria">Sequência</label>
-          <input
-            type="text"
-            id="sequenciaCategoria"
-            name="sequenciaCategoria"
-            required
-            class="input-field"
-            placeholder="Digite a sequência"
-          />
+    <h2>Cadastro de Categorias</h2>
+    <div class="row">
+      <form action="" class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="sequenciaCategoria">Sequência</label>
+            <input type="text" id="sequenciaCategoria" name="sequenciaCategoria" required/>
+          </div>
         </div>
-          
-          
-        
-        <div class="input-container">
-          <label for="categoria">Categoria</label>
-          <input type="text" id="categoria" name="categoria" required class="input-field" placeholder="Digite a categoria"/>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="categoria">Categoria</label>
+            <input type="text" id="categoria" name="categoria" required/>
+          </div>
         </div>
-
-        <div class="form-btn-container">
-          <input type="button" value="Cadastrar">
-          <input type="reset" value="Limpar">
-        </div>
-      </form>
+        <input type="button" value="Cadastrar" >
+        <input type="reset" value="Limpar" >
+    </form>
     </div>
     <%- include('../partials/footer.ejs') %>
   </body>

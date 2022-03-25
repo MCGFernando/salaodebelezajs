@@ -94,12 +94,24 @@ const marcacao_create = (req, res) => {
 
 const marcacao_list = (req, res) => {
   Marcacao.find()
-    .populate("staff")
-    .populate("cliente")
+    .populate({
+      path:'staff',
+      populate:{
+        path:'conta',
+        model:'Conta'
+      }
+    })
+    .populate({
+      path:'cliente',
+      populate:{
+        path:'conta',
+        model:'Conta'
+      }
+    })
     .populate("productoServico")
     .then((result) => {
-      //res.render("marcacao/table_lista_marcacao", { marcacoes: result });
-      res.send(result)
+      res.render("marcacao/table_lista_marcacao", { marcacoes: result });
+      //res.send(result)
     })
     .catch((err) => console.log(err));
 };

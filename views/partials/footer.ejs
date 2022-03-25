@@ -1,6 +1,32 @@
-</div>
+
 </main>
-</section>
+
+<script>
+    const tbl = document.querySelector('table')
+    document.addEventListener('DOMContentLoaded', function(){
+    // nav Menu
+    const menus = document.querySelectorAll('.slide-out')
+    M.Sidenav.init(menus, {edge:'left'})
+    // nav recipe form
+    const forms = document.querySelectorAll('.side-form')
+    M.Sidenav.init(forms, {edge:'left'})
+})
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    M.FormSelect.init(elems);
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+     M.Dropdown.init(elems,{coverTrigger:false, alignment:'right'});
+  });
+
+  tbl.addEventListener('click', e => {
+      console.log(e.target.parentElement.parentElement)
+  })
+</script>
+<!-- 
 <script>
     const navLinks = document.querySelector('.nav-links')
     const subMenu = document.querySelector('.sub-menu')
@@ -33,12 +59,12 @@
         sidebar.classList.toggle('hide')
     })
 
-    /* pesquisa.addEventListener('keyup', (e) => {
+    pesquisa.addEventListener('keyup', (e) => {
         const searchText = e.target.value
 
         filterList(searchText)
     }) 
- */
+
     const filterList = (term) =>{
        
        Array.from(displayList.children)
@@ -49,4 +75,4 @@
        .filter(filtered =>  filtered.textContent.toLocaleLowerCase().includes(term))
        
 }
-</script>
+</script> -->

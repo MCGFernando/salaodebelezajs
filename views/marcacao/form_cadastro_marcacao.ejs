@@ -9,79 +9,73 @@
   <body>
     <%- include('../partials/sidebar.ejs') %> 
     <%- include('../partials/header.ejs') %>
-    <div class="card-header">
-      <h2>Formulário de Cadastro - </h2>
-    </div>
-    <div class="container">
-      <form action="/marcacoes" method="post" class="form-container">
-        <div class="input-container">
-          <label for="staff">Nome Funcionario</label>
-          <select name="staff" id="staff" class="input-field">
-            <% if (staffs.length > 0){%>
-            <option value="-1" disabled selected>
-              Selecione o Funcionario
-            </option>
-            <% staffs.forEach(staff=>{ %>
-            <option value="<%= staff._id %>"><%= staff.conta.nome %></option>
-            <% }) %> <% } else { %>
-            <option disabled>Não há funcionarios para mostrar</option>
-            <% } %>
-          </select>
+    <h2>Formulário de Marcações</h2>
+    <div class="row">
+      <form action="/marcacoes" method="post" class="col s12">
+
+        <div class="row">
+          <div class="input-field col s12">
+            <select name="staff" id="staff">
+              <% if (staffs.length > 0){%>
+              <option value="" disabled selected>Selecione o Funcionario</option>
+              <% staffs.forEach(staff=>{ %>
+              <option value="<%= staff._id %>"><%= staff.conta.nome %></option>
+              <% }) %> <% } else { %>
+              <option disabled>Não há funcionarios para mostrar</option>
+              <% } %>
+            </select>
+            <label for="staff">Nome Funcionario</label>
+          </div>
         </div>
-        <div class="input-container">
-          <label for="productoServico">Producto / Serviço</label>
-          <select name="productoServico" id="productoServico" class="input-field">
-            <% if (productosServicos.length > 0){%>
-            <option value="" disabled selected>Selecione o Producto</option>
-            <% productosServicos.forEach(productoServico=>{ %>
-            <option value="<%= productoServico._id %>">
-              <%= productoServico.productoServico %>
-            </option>
-            <% }) %> <% } else { %>
-            <option disabled>Não há productos para mostrar</option>
-            <% } %>
-          </select>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <select name="productoServico" id="productoServico">
+              <% if (productosServicos.length > 0){%>
+              <option value="" disabled selected>Selecione o Producto</option>
+              <% productosServicos.forEach(productoServico=>{ %>
+              <option value="<%= productoServico._id %>">
+                <%= productoServico.productoServico %>
+              </option>
+              <% }) %> <% } else { %>
+              <option disabled>Não há productos para mostrar</option>
+              <% } %>
+            </select>
+            <label for="productoServico">Producto / Serviço</label>
+          </div>
         </div>
-        <div class="input-container">
-          <label for="cliente">Cliente</label>
-          <select name="cliente" id="cliente" class="input-field">
-            <% if (clientes.length > 0){%>
-            <option value="" disabled selected>Selecione o Cliente</option>
-            <% clientes.forEach(cliente=>{ %>
-            <option value="<%= cliente._id %>">
-              <%= cliente.conta.nome %>
-            </option>
-            <% }) %> <% } else { %>
-            <option disabled>Não há clientes para mostrar</option>
-            <% } %>
-          </select>
+        
+
+        <div class="row">
+          <div class="input-field col s12">            
+            <select name="cliente" id="cliente">
+              <% if (clientes.length > 0){%>
+              <option value="" disabled selected>Selecione o Cliente</option>
+              <% clientes.forEach(cliente=>{ %>
+              <option value="<%= cliente._id %>">
+                <%= cliente.conta.nome %>
+              </option>
+              <% }) %> <% } else { %>
+              <option disabled>Não há clientes para mostrar</option>
+              <% } %>
+            </select>
+            <label for="cliente">Cliente</label>
+          </div>
         </div>
-        <div class="input-container">
-          <!-- Default data Today -->
-          <label for="dataMarcacao">Data</label>
-          <input
-            type="date"
-            placeholder="Selecione a Imagem."
-            name="dataMarcacao"
-            id="dataMarcacao"
-            class="input-field"
-          />
+        
+        <div class="row">
+          <div class="input-field col s6">
+            <label for="dataMarcacao">Data</label>
+            <input type="date" name="dataMarcacao" id="dataMarcacao" placeholder=""/>
+          </div>
+  
+          <div class="input-field col s6">
+            <label for="horaMarcacao">Hora</label>
+            <input type="time" name="horaMarcacao" id="horaMarcacao" placeholder=""/>
+          </div>
         </div>
-        <div class="input-container">
-          <!-- Default time Now -->
-          <label for="horaMarcacao">Hora</label>
-          <input
-            type="time"
-            placeholder="Selecione a Imagem."
-            name="horaMarcacao"
-            id="horaMarcacao"
-            class="input-field"
-          />
-        </div>
-        <div class="form-btn-container">
           <input type="button" value="Cadastrar">
           <input type="reset" value="Limpar">
-        </div>
       </form>
     </div>
     <%- include('../partials/footer.ejs') %>

@@ -9,34 +9,52 @@
   <body>
     <%- include('../partials/sidebar.ejs') %> <%-
     include('../partials/header.ejs') %>
-    <div class="container">
-      <table class="display-table">
-        <tr class="header">
-          <th>Nome</th>
-          <th>Genero</th>
-          <th>E-mail</th>
-          <th>Telefone</th>
-          <th>Desconto</th>
-          <th>Dt Criado</th>
-          <th>Dt Alterado</th>
-          <th>Estado</th>
-        </tr>
-        <% if (clientes.length > 0){%> <% clientes.forEach(cliente=>{ %>
-        <tr>
-          <td><%= cliente.conta.nome%></td>
-          <td><%= cliente.genero%></td>
-          <td><%= cliente.conta.email%></td>
-          <td><%= cliente.conta.telefone%></td>
-          <td><%= cliente.desconto%></td>
-          <td><%= cliente.createdAt%></td>
-          <td><%= cliente.updatedAt%></td>
-          <td><%= cliente.estado%></td>
-          <% }) %> <% } else { %>
-          <p>Não há clientes a mostrar</p>
-          <% } %>
-        </tr>
+    
+      <table >
+        <thead>
+          <tr >
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Genero</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Desconto</th>
+            <th>Dt Criado</th>
+            <th>Dt Alterado</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (clientes.length > 0){%> <% clientes.forEach(cliente=>{ %>
+            <tr>
+              <td><%= cliente._id%></td>
+              <td><%= cliente.conta.nome%></td>
+              <td><%= cliente.genero%></td>
+              <td><%= cliente.conta.email%></td>
+              <td><%= cliente.conta.telefone%></td>
+              <td><%= cliente.desconto%></td>
+              <td><%= cliente.createdAt%></td>
+              <td><%= cliente.updatedAt%></td>
+              <td><%= cliente.estado%></td>
+              <td>
+                <a class='dropdown-trigger btn-flat #eeeeee grey lighten-3' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a>
+                <ul id='dropdown1' class='dropdown-content'>
+                  <li><a href="#!">Editar</a></li>
+                  <li><a href="#!">Activar / Desactivar</a></li>
+                  <li><a href="#!">Ver</a></li>
+                  <li><a href="#!">Marcar</a></li>
+                </ul>
+              </td>
+              <% }) %> <% } else { %>
+                <tr>
+                  <td colspan="10">Sem Clientes para mostrar</td>
+                </tr>
+              <% } %>
+            </tr>
+        </tbody>
       </table>
-    </div>
+    
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

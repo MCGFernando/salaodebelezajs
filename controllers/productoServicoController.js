@@ -6,9 +6,8 @@ const productoServico_list = (req, res) => {
     .sort({ createdAt: -1 })
     .populate("categoria")
     .then((result) => {
-      //res.render("productoservico/table_lista_productoservico", { result });
-      console.log(result)
-      res.send(result)
+      res.render("productoservico/table_lista_productoservico", {productoservicos : result });
+      //res.send(result)
     })
     .catch((err) => console.log(err));
 };

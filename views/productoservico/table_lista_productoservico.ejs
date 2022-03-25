@@ -8,48 +8,57 @@
   <body>
     <%- include('../partials/sidebar.ejs') %> <%-
     include('../partials/header.ejs') %>
-    <div class="card-header">
-      <h2>Listagem de</h2>
-    </div>
-    <div class="container">
-      <div class="input-container">
-        <label for="pesquisa">Pesquisar:</label>
+    <label for="pesquisa">Pesquisar:</label>
         <input
           type="search"
           id="pesquisa"
           class="input-field input-pesquisa"
-          placeholder="Pesquisar por categorias.."
+          placeholder="Pesquisar por prodcutos / serviços.."
           title="Digite a categoria"
         />
-      </div>
-      <!-- <%= result%> -->
-      <table class="display-table">
-        <tr class="header">
-          <th style="width:60%;">Name</th>
-          <th style="width:40%;">Country</th>
-        </tr>
+    <table>
+      <thead>
         <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Germany</td>
+            <th>ID</th>
+            <th>Producto / Serviço</th>
+            <th>Descrição</th>
+            <th>Sequencia</th>
+            <th>Categoria</th>
+            <th>Quantidade</th>
+            <th>Valor de Compra</th>
+            <th>Valor de Venda</th>
+            <th></th>
         </tr>
+      </thead>
+
+      <tbody>
+        <% if (productoservicos.length > 0) {%>
+          <%productoservicos.forEach(productoservico => {%>
         <tr>
-          <td>Berglunds snabbkop</td>
-          <td>Sweden</td>
+          <td><%=productoservico._id%></td>
+          <td><%=productoservico.productoServico%></td>
+          <td><%=productoservico.descricao%></td>
+          <td><%=productoservico.categoria.sequencia%></td>
+          <td><%=productoservico.categoria.categoria%></td>
+          <td><%=productoservico.quantidade%></td>
+          <td><%=productoservico.valorCompra%></td>
+          <td><%=productoservico.valorVenda%></td>
+          <td>
+            <a class='dropdown-trigger btn-flat #eeeeee grey lighten-3' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a>
+                <ul id='dropdown1' class='dropdown-content'>
+                  <li><a href="#!">Editar</a></li>
+                  <li><a href="#!">Excluir</a></li>
+                </ul>
+          </td>
         </tr>
-        <tr>
-          <td>Island Trading</td>
-          <td>UK</td>
-        </tr>
-        <tr>
-          <td>Koniglich Essen</td>
-          <td>Germany</td>
-        </tr>
-      </table>
-      
-      <ul class="display-list">
-       
-      </ul>
-    </div>
+        <% }) %> <% } else { %>
+          <tr>
+            <td colspan="4">Sem Productos / Serviços para mostrar</td>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

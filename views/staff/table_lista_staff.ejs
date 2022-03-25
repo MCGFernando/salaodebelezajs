@@ -9,34 +9,52 @@
   <body>
     <%- include('../partials/sidebar.ejs') %> <%-
     include('../partials/header.ejs') %>
-    <div class="container">
-      <table class="display-table">
-        <tr class="header">
-          <th>Nome</th>
-          <th>Genero</th>
-          <th>E-mail</th>
-          <th>Telefone</th>
-          <th>Funcao</th>
-          <th>Dt Criado</th>
-          <th>Dt Alterado</th>
-          <th>Estado</th>
-        </tr>
-        <% if (staffs.length > 0){%> <% staffs.forEach(staff=>{ %>
-        <tr>
-          <td><%= staff.conta.nome%></td>
-          <td><%= staff.genero%></td>
-          <td><%= staff.conta.email%></td>
-          <td><%= staff.conta.telefone%></td>
-          <td><%= staff.funcao%></td>
-          <td><%= staff.createdAt%></td>
-          <td><%= staff.updatedAt%></td>
-          <td><%= staff.estado%></td>
-          <% }) %> <% } else { %>
-          <p>Não há clientes a mostrar</p>
-          <% } %>
-        </tr>
+    
+      <table >
+        <thead>
+          <tr >
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Genero</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Funcao</th>
+            <th>Dt Criado</th>
+            <th>Dt Alterado</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (staffs.length > 0){%> <% staffs.forEach(staff=>{ %>
+            <tr>
+              <td><%= staff._id%></td>
+              <td><%= staff.conta.nome%></td>
+              <td><%= staff.genero%></td>
+              <td><%= staff.conta.email%></td>
+              <td><%= staff.conta.telefone%></td>
+              <td><%= staff.funcao%></td>
+              <td><%= staff.createdAt%></td>
+              <td><%= staff.updatedAt%></td>
+              <td><%= staff.estado%></td>
+              <td>
+                <a class='dropdown-trigger btn-flat #eeeeee grey lighten-3' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a>
+                <ul id='dropdown1' class='dropdown-content'>
+                  <li><a href="#!">Editar</a></li>
+                  <li><a href="#!">Activar / Desativar</a></li>
+                  <li><a href="#!">Ver</a></li>
+                  <li><a href="#!">Marcar</a></li>
+                </ul>
+              </td>
+              <% }) %> <% } else { %>
+                <tr>
+                  <td colspan="10">Sem Staff para mostrar</td>
+                </tr>
+              <% } %>
+            </tr>
+        </tbody>
       </table>
-    </div>
+    
     <%- include('../partials/footer.ejs') %>
 
   </body>

@@ -9,84 +9,80 @@
   <body>
     <%- include('../partials/sidebar.ejs') %> <%-
     include('../partials/header.ejs') %>
-    <div class="card-header">
-      <h2>Formulário de Cadastro - </h2>
-    </div>
-    <div class="container">
-      <form action="/productoservico" method="post" class="form-container">
-        <div class="input-container">
-          <label for="categoria">Categoria</label>
-          <select name="categoria" id="categoria" required class="input-field">
-            <% if (categorias.length > 0){%>
-            <option value="0" disabled>Selecione a Categoria</option>
-            <% categorias.forEach(categoria=>{ %>
-            <option value="<%=categoria._id %>">
-              <%= categoria.categoria %>
-            </option>
-            <% }) %> <% } else { %>
-            <option value="0" disabled>Sem Categorias disponíveis</option>
-            <% } %>
-          </select>
+    <h2>Cadastro de Productos / Servicos</h2>
+    <div class="row">
+      <form action="/productoservico" method="post" class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="categoria">Categoria</label>
+            <select name="categoria" id="categoria" required class="input-field">
+              <% if (categorias.length > 0){%>
+              <option value="0" disabled>Selecione a Categoria</option>
+              <% categorias.forEach(categoria=>{ %>
+              <option value="<%=categoria._id %>">
+                <%= categoria.categoria %>
+              </option>
+              <% }) %> <% } else { %>
+              <option value="0" disabled>Sem Categorias disponíveis</option>
+              <% } %>
+            </select>
+          </div>
         </div>
 
-        <div class="input-container">
-          <label for="productoServico">Producto / Serviço</label>
-          <input
-            type="text"
-            id="productoServico"
-            name="productoServico"
-            required
-            class="input-field"
-            placeholder="Digite o producto ou serviço"
-          />
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="productoServico">Producto / Serviço</label>
+            <input
+              type="text"
+              id="productoServico"
+              name="productoServico"
+              required
+            />
+          </div>
         </div>
-        <div class="input-container">
-          <label for="descricao">Descrição</label>
-          <input type="text" id="descricao" name="descricao" class="input-field" placeholder="Digite uma descrição"/>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="descricao">Descrição</label>
+            <input type="text" id="descricao" name="descricao"/>
+          </div>
         </div>
-        <div class="input-container">
-          <label for="quantidade">Quantidade</label>
-          <input type="number" id="quantidade" name="quantidade" min="1" class="input-field" placeholder="Digite a quantidade"/>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" id="quantidade" name="quantidade" min="1"/>
+          </div>
+          <div class="input-field col s6">
+            <label for="valorCompra">Valor de Compra</label>
+            <input type="number" id="valorCompra" name="valorCompra" step="0.01"/>
+          </div>
         </div>
-        <div class="input-container">
-          <label for="valorCompra">Valor de Compra</label>
-          <input
-            type="number"
-            id="valorCompra"
-            name="valorCompra"
-            step="0.01"
-            class="input-field"
-            placeholder="Digite o valor de compra"
-          />
+
+        <div class="row">
+          <div class="input-field col s6">
+            <label for="desconto">Desconto</label>
+            <input type="number" id="desconto" name="desconto" step="0.01"/>
+          </div>
+          <div class="input-field col s6">
+            <label for="iva">IVA</label>
+            <input type="number" id="iva" name="iva" step="0.01"/>
+          </div>
         </div>
-        <div class="input-container">
-          <label for="desconto">Desconto</label>
-          <input type="number" id="desconto" name="desconto" step="0.01" class="input-field" placeholder="Digite o valor do desconto"/>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <label for="taxaLucro">Taxa de Lucro</label>
+            <input type="number" id="taxaLucro" name="taxaLucro" step="0.01"/>
+          </div>
+          <div class="input-field col s6">
+            <label for="valorVenda">Valor de Venda</label>
+            <input type="number" id="valorVenda" name="valorVenda" step="0.01" required/>
+          </div>
         </div>
-        <div class="input-container">
-          <label for="iva">IVA</label>
-          <input type="number" id="iva" name="iva" step="0.01" class="input-field" placeholder="Digite o valor do IVA"/>
-        </div>
-        <div class="input-container">
-          <label for="taxaLucro">Taxa de Lucro</label>
-          <input type="number" id="taxaLucro" name="taxaLucro" step="0.01" class="input-field" placeholder="Digite a taxa de lucro"/>
-        </div>
-        <div class="input-container">
-          <label for="valorVenda">Valor de Venda</label>
-          <input
-            type="number"
-            id="valorVenda"
-            name="valorVenda"
-            step="0.01"
-            required
-            class="input-field"
-            placeholder="Digiteo valor de venda"
-          />
-        </div>
-        <div class="form-btn-container">
-          <input type="button" value="Cadastrar">
+
+        <input type="button" value="Cadastrar">
           <input type="reset" value="Limpar">
-        </div>
       </form>
     </div>
     <%- include('../partials/footer.ejs') %>
