@@ -1,7 +1,10 @@
-.autocompletar {
-    display: none;
+.collection-pesquisar {
     position:absolute;
     width: 100%;
+}
+
+.collection-item {
+    z-index: 3;
 }
 
 .hide{

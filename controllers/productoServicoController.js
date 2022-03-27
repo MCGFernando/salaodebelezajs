@@ -14,7 +14,7 @@ const productoServico_list = (req, res) => {
 
 const productoServico_list_autocomplete = (req, res) => {
   const search = req.params.q;
-  ProductoServico.find({$productoServico : search})
+  ProductoServico.find({productoServico :  search })
     .sort({ createdAt: -1 })
     .populate("categoria")
     .then((result) => {

@@ -34,7 +34,10 @@ const venda_new = (req, res) =>{
     
 }
 
-
+const venda_create = (req, res) =>{
+  console.log(req.body)
+}
 module.exports = {
-    venda_new
+    venda_new,
+    venda_create
 }

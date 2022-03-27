@@ -11,7 +11,7 @@
     include('../partials/header.ejs') %>
     <h2>Formulário de Marcações</h2>
     <div class="row">
-      <form action="/" method="post" class="col s12">
+      <form action="/vendas" method="post" class="col s12">
         <div class="row">
           <div class="input-field col s6">
             <select name="staff" id="staff">
@@ -48,36 +48,39 @@
 
         <div class="row">
           <div class="col s12" style="margin: 0;">
-            <label for="">Autocomplete</label>
+            <label for="">Pesquisar por Producto / Serviço...</label>
             <input type="text" class="pesquisar" />
-            <ul class="collection">
-              <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>        
-              <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>        
+            <ul class="collection collection-pesquisar">
+              <!-- Autocomplete Aqui -->
             </ul>
           </div>
         </div>
 
+        <!-- <div class="row">
+          <div class="col s12">
+            <ul class="collection caixa">
+              <li class="collection-header"><h4>Caixa</h4></li>
+                          </ul>
+          </div>
+        </div> -->
+
         <div class="row">
           <div class="col s12">
-            <ul class="collection">
-              <li class="collection-header"><h4>Caixa</h4></li>
-              <% if (productosServicos.length > 0){%> <%
-              productosServicos.forEach(productoServico=>{ %>
-              <li class="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" class="circle" />
-                <span class="title"><%=productoServico.productoServico%></span>
-                <p>
-                  <%=productoServico.descricao%><br />
-                  <%=productoServico.valorVenda%>
-                </p>
-                <a href="#!" class="secondary-content"
-                  ><i class="material-icons">send</i></a
-                >
-              </li>
-              <% }) %> <% } else { %>
-              <li>Não há productos para mostrar</li>
-              <% } %>
-            </ul>
+            <table class="tblCaixa">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Producto / Serviço</th>
+                  <th>Valor</th>
+                  <th>Quantidade</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead> 
+              <tbody class="caixa">
+
+              </tbody>
+            </table>
           </div>
         </div>
 
