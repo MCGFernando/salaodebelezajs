@@ -33,11 +33,50 @@ const venda_new = (req, res) =>{
       })
     
 }
-
+const venda_list = (req, res) =>{
+  Venda.find().populate({
+    path:'staff',
+    populate:{
+      path:'conta',
+      model:'Conta'
+    }
+  }).populate({
+    path:'cliente',
+    populate:{
+      path:'conta',
+      model:'Conta'
+    }
+  }).then(result =>{
+    res.render('venda/table_lista_venda',{vendas : result})
+  }).catch(err=>{
+    res.render('404')
+  })
+}
 const venda_create = (req, res) =>{
-  console.log(req.body)
+  const {staff, cliente} = req.body 
+  let itemVenda = []
+
+  for (let i = 0; i < req.body.id.length; i++){
+    itemVenda[i] = {
+      productoServico : req.body.id[i],
+      quantidade : req.body.quantidade[i]
+    }
+  }
+  
+  const venda = new Venda({
+    staff,
+    cliente,
+    itemVenda
+  })
+  venda
+    .save()
+    .then((result) => {
+      res.redirect('/vendas/new');
+    })
+    .catch((err) => console.log(err));
 }
 module.exports = {
     venda_new,
-    venda_create
+    venda_create,
+    venda_list
 }
