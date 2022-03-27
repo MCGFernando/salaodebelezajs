@@ -22,58 +22,21 @@ document.addEventListener('DOMContentLoaded', function() {
      M.Dropdown.init(elems,{coverTrigger:false, alignment:'right'});
   });
 
-  /* const tbl = document.querySelector('table')
-  tbl.addEventListener('click', e => {
-      console.log(e.target.parentElement.parentElement)
-  }) */
-</script>
-<!-- 
-<script>
-    const navLinks = document.querySelector('.nav-links')
-    const subMenu = document.querySelector('.sub-menu')
-    const touggleMenu = document.querySelector('.touggle-menu')
-    const sidebar = document.querySelector('.sidebar')
-    const mainContainer = document.querySelector('.main-container')
-    const pesquisa = document.querySelector('#pesquisa')
-    const displayList = document.querySelector('.display-list')
-    
 
-    navLinks.addEventListener('click', e => {
-        if (e.target.classList.length>0){
-            if(e.target.classList.contains('arrow')){
-                e.target.parentElement.nextElementSibling.classList.toggle('hide')
-            }
-        }else{
-            console.log('Drop')
-        }
-    })
-
-    touggleMenu.addEventListener('click', (e) => {
+const pesquisar = document.querySelector('.pesquisar')
+const collection = document.querySelector('.collection')
+pesquisar.addEventListener('keyup', e =>{
         
-        if (sidebar.classList.contains('hide')){
-            mainContainer.style.left = '260px'
-            mainContainer.style.width = 'calc(100% - 260px)'
-        }else{
-            mainContainer.style.left = '0px'
-            mainContainer.style.width = '100%'
-        }
-        sidebar.classList.toggle('hide')
+    fetch('http://localhost:3000/productoservico/autocomplete/' + e.target.value).then(response=>{
+        return response.json() 
+    }).then(data=>{
+        console.log(data)
+        data.forEach(d => {
+            collection.innerHTML += `<li class="collection-item"><div>${d.productoServico}<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>`
+        })
+        
+    }).catch(error=>{
+        console.log(error)
     })
-
-    pesquisa.addEventListener('keyup', (e) => {
-        const searchText = e.target.value
-
-        filterList(searchText)
-    }) 
-
-    const filterList = (term) =>{
-       
-       Array.from(displayList.children)
-       .filter(filtered =>  !filtered.textContent.toLocaleLowerCase().includes(term))
-       .forEach(filtered=> filtered.setAttribute('class','hide'))
-
-       Array.from(displayList.children)
-       .filter(filtered =>  filtered.textContent.toLocaleLowerCase().includes(term))
-       
-}
-</script> -->
+})
+</script>

@@ -3,6 +3,7 @@ const productoServicoController = require('../controllers/productoServicoControl
 const router = express.Router()
 
 router.get('/', productoServicoController.productoServico_list)
+router.get('/autocomplete/:q', productoServicoController.productoServico_list_autocomplete)
 router.get('/new', productoServicoController.productoServico_new)
 
 router.post('/', productoServicoController.productoServico_create)

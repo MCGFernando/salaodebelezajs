@@ -7,17 +7,18 @@
     <title>Document</title>
   </head>
   <body>
-    <%- include('../partials/sidebar.ejs') %> 
-    <%- include('../partials/header.ejs') %>
+    <%- include('../partials/sidebar.ejs') %> <%-
+    include('../partials/header.ejs') %>
     <h2>Formulário de Marcações</h2>
     <div class="row">
       <form action="/" method="post" class="col s12">
-
         <div class="row">
           <div class="input-field col s6">
             <select name="staff" id="staff">
               <% if (staffs.length > 0){%>
-              <option value="" disabled selected>Selecione o Funcionario</option>
+              <option value="" disabled selected>
+                Selecione o Funcionario
+              </option>
               <% staffs.forEach(staff=>{ %>
               <option value="<%= staff._id %>"><%= staff.conta.nome %></option>
               <% }) %> <% } else { %>
@@ -28,26 +29,8 @@
           </div>
         </div>
 
-        <!-- <div class="row">
-          <div class="input-field col s12">
-            <select name="productoServico" id="productoServico">
-              <% if (productosServicos.length > 0){%>
-              <option value="" disabled selected>Selecione o Producto</option>
-              <% productosServicos.forEach(productoServico=>{ %>
-              <option value="<%= productoServico._id %>">
-                <%= productoServico.productoServico %>
-              </option>
-              <% }) %> <% } else { %>
-              <option disabled>Não há productos para mostrar</option>
-              <% } %>
-            </select>
-            <label for="productoServico">Producto / Serviço</label>
-          </div>
-        </div>
-         -->
-
         <div class="row">
-          <div class="input-field col s12">            
+          <div class="input-field col s12">
             <select name="cliente" id="cliente">
               <% if (clientes.length > 0){%>
               <option value="" disabled selected>Selecione o Cliente</option>
@@ -62,37 +45,44 @@
             <label for="cliente">Cliente</label>
           </div>
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="">Pesquisar por Productos / Serviços...</label>
-                <input type="text">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <ul class="collection">
-                    <li class="collection-header"><h4>Productos / Serviços</h4></li>
-                    <% if (productosServicos.length > 0){%>
-                        <% productosServicos.forEach(productoServico=>{ %>
-                    <li class="collection-item avatar">
-                      <img src="images/yuna.jpg" alt="" class="circle">
-                      <span class="title"><%=productoServico.productoServico%></span>
-                      <p><%=productoServico.descricao%><br>
-                        <%=productoServico.valorVenda%>
-                      </p>
-                      <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-                    </li>
-                    <% }) %> <% } else { %>
-                        <li>Não há productos para mostrar</li>
-                    <% } %>
-                </ul>
-            </div>
 
-            
+        <div class="row">
+          <div class="col s12" style="margin: 0;">
+            <label for="">Autocomplete</label>
+            <input type="text" class="pesquisar" />
+            <ul class="collection">
+              <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>        
+              <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>        
+            </ul>
+          </div>
         </div>
-        
-          <input type="submit" value="Cadastrar">
-          <input type="reset" value="Limpar">
+
+        <div class="row">
+          <div class="col s12">
+            <ul class="collection">
+              <li class="collection-header"><h4>Caixa</h4></li>
+              <% if (productosServicos.length > 0){%> <%
+              productosServicos.forEach(productoServico=>{ %>
+              <li class="collection-item avatar">
+                <img src="images/yuna.jpg" alt="" class="circle" />
+                <span class="title"><%=productoServico.productoServico%></span>
+                <p>
+                  <%=productoServico.descricao%><br />
+                  <%=productoServico.valorVenda%>
+                </p>
+                <a href="#!" class="secondary-content"
+                  ><i class="material-icons">send</i></a
+                >
+              </li>
+              <% }) %> <% } else { %>
+              <li>Não há productos para mostrar</li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+
+        <input type="submit" value="Cadastrar" />
+        <input type="reset" value="Limpar" />
       </form>
     </div>
     <%- include('../partials/footer.ejs') %>
