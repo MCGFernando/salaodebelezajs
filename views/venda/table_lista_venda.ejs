@@ -8,11 +8,13 @@
   <body>
     <%- include('../partials/sidebar.ejs') %> <%-
     include('../partials/header.ejs') %>
-    <label >Pesquisar:</label>
-        <input
-          type="search"
-          class="input-field input-pesquisa"
-        />
+    <h2>Cosulta de Vendas</h2>
+    <div class="row">
+      <div class="input-field  col s12">
+        <label for="pesquisa">Pesquisar:</label>
+        <input type="text" />
+      </div>
+    </div>
     <table>
       <thead>
         <tr>
@@ -37,6 +39,7 @@
           <td></td>
           <td></td>
           <td></td>
+          <td><%=venda.estado%></td>
           <td><%=venda.createdAt%></td>
           <td>
             <a class='dropdown-trigger btn-flat #eeeeee grey lighten-3' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a>

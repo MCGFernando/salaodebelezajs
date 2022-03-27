@@ -41,7 +41,7 @@ const productoServico_create = (req, res) => {
   productoservico
     .save()
     .then((result) => {
-      res.send(result);
+      res.redirect('/productoservico');
     })
     .catch((err) => console.log(err));
 };

@@ -8,59 +8,67 @@
   <body>
     <%- include('../partials/sidebar.ejs') %> <%-
     include('../partials/header.ejs') %>
-    
+    <h2>Cosulta de Categorias</h2>
+    <div class="row">
+      <div class="input-field  col s12">
         <label for="pesquisa">Pesquisar:</label>
-        <input
-          type="search"
-          id="pesquisa"
-          class="input-field input-pesquisa"
-          placeholder="Pesquisar por categorias.."
-          title="Digite a categoria"
-        />
-        <table>
-          <thead>
-            <tr>
-                <th>ID</th>
-                <th>Sequencia</th>
-                <th>Categoria</th>
-                <th></th>
-            </tr>
-          </thead>
-  
-          <tbody>
-            <% if (categorias.length > 0){%> <% categorias.forEach(categoria=>{%>
-            <tr>
-              <td><%= categoria._id %></td>
-              <td><%= categoria.Sequencia %></td>
-              <td><%= categoria.categoria %></td>
-              <td>
-                <a class='dropdown-trigger btn-flat #eeeeee grey lighten-3' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a>
-                <ul id='dropdown1' class='dropdown-content'>
-                  <li><a href="#!">Editar</a></li>
-                  <li><a href="#!">Excluir</a></li>
-                  <li class="divider" tabindex="-1"></li>
-                  <li><a href="#!">three</a></li>
-                  <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                  <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-                </ul>
-              </td>
-            </tr>
-            <% }) %> <% } else { %>
-              <tr>
-                <td colspan="4">Sem Categorias para mostrar</td>
-              </tr>
-              <% } %>
-          </tbody>
-        </table>
+        <input type="text" />
+      </div>
+    </div>
 
-      <!-- <ul class="display-list">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Sequencia</th>
+          <th>Categoria</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if (categorias.length > 0){%> <% categorias.forEach(categoria=>{%>
+        <tr>
+          <td><%= categoria._id %></td>
+          <td><%= categoria.Sequencia %></td>
+          <td><%= categoria.categoria %></td>
+          <td>
+            <a
+              class="dropdown-trigger btn-flat #eeeeee grey lighten-3"
+              href="#"
+              data-target="dropdown1"
+              ><i class="material-icons">more_vert</i></a
+            >
+            <ul id="dropdown1" class="dropdown-content">
+              <li><a href="#!">Editar</a></li>
+              <li><a href="#!">Excluir</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li><a href="#!">three</a></li>
+              <li>
+                <a href="#!"><i class="material-icons">view_module</i>four</a>
+              </li>
+              <li>
+                <a href="#!"><i class="material-icons">cloud</i>five</a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <% }) %> <% } else { %>
+        <tr>
+          <td colspan="4">Sem Categorias para mostrar</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <!-- <ul class="display-list">
         <% if (categorias.length > 0){%> <% categorias.forEach(categoria=>{%>
         <li><a href="#"><%= categoria.categoria %></a></li>
         <% }) %> <% } else { %>
         <p>Sem Categorias para mostrar</p>
         <% } %>
       </ul> -->
-    
+
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

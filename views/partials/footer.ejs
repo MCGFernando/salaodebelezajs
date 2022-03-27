@@ -7,9 +7,9 @@
     // nav Menu
     const menus = document.querySelectorAll('.slide-out')
     M.Sidenav.init(menus, {edge:'left'})
-    // nav recipe form
-    const forms = document.querySelectorAll('.side-form')
-    M.Sidenav.init(forms, {edge:'left'})
+    var collapsibleElem = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(collapsibleElem);
+   
 })
 
 document.addEventListener('DOMContentLoaded', function() {

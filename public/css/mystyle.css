@@ -10,3 +10,7 @@
 .hide{
     display: none;
 }
+
+.sidenav-trigger:hover{
+    cursor: pointer;
+}

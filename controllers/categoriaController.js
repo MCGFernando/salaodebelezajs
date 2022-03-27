@@ -9,6 +9,7 @@ const categoria_create = (req, res) => {
   categoria
     .save()
     .then((result) => {
+       
       res.redirect("/categorias");
     })
     .catch((err) => {
