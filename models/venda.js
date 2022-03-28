@@ -5,7 +5,7 @@ const vendaSchema = new Schema({
     cliente : {type:Schema.Types.ObjectId, ref:'Cliente', required:true},
     staff : {type:Schema.Types.ObjectId, ref:'Staff', required:true},
     parcela: {type:Number},
-    valorTotal: {type:Number},
+    valorTotalVenda: {type:Number},
     tipoPagamento: {type:String},
     itemVenda:[{
         productoServico : {type:Schema.Types.ObjectId, ref:'ProductoServico', required:true},

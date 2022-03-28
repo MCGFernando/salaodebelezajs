@@ -54,7 +54,10 @@ const venda_list = (req, res) =>{
 }
 const venda_create = (req, res) =>{
   console.log(req.body)
-  /* const {staff, cliente} = req.body 
+  const pagamento = {
+    valorPago: req.body.valorPago,
+  }
+   const {staff, cliente} = req.body 
   let itemVenda = []
 
   for (let i = 0; i < req.body.id.length; i++){
@@ -67,14 +70,16 @@ const venda_create = (req, res) =>{
   const venda = new Venda({
     staff,
     cliente,
-    itemVenda
+    itemVenda,
+    pagamento
   })
+  console.log(venda)
   venda
     .save()
     .then((result) => {
       res.redirect('/vendas/new');
     })
-    .catch((err) => console.log(err)); */
+    .catch((err) => console.log(err));
 }
 module.exports = {
     venda_new,
