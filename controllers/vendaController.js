@@ -53,7 +53,8 @@ const venda_list = (req, res) =>{
   })
 }
 const venda_create = (req, res) =>{
-  const {staff, cliente} = req.body 
+  console.log(req.body)
+  /* const {staff, cliente} = req.body 
   let itemVenda = []
 
   for (let i = 0; i < req.body.id.length; i++){
@@ -73,7 +74,7 @@ const venda_create = (req, res) =>{
     .then((result) => {
       res.redirect('/vendas/new');
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err)); */
 }
 module.exports = {
     venda_new,

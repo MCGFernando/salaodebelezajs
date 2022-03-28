@@ -13,7 +13,7 @@
     <div class="row">
       <form action="/vendas" method="post" class="col s12">
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s12">
             <select name="staff" id="staff">
               <% if (staffs.length > 0){%>
               <option value="" disabled selected>
@@ -45,26 +45,32 @@
             <label for="cliente">Cliente</label>
           </div>
         </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <select name="tipoPagamento" id="tipoPagamento">
+              <option value="" disabled selected>Selecine o tipo de pagamento</option>
+              <option value="Prazo">A Prazo</option>
+              <option value="Vista">A Vista</option>
+            </select>
+            <label for="tipoPagamento">Tipo de Pagamento</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="number" name="parcela" id="parcela">
+            <label for="parcela">Tipo de Pagamento</label>
+          </div>
+        </div>
 
         <div class="row">
-          <div class="input-field col s12" style="margin: 0;">
-            <i class="material-icons prefix">search</i>
-            
-            <input type="text" class="pesquisar" />
+          <div class="col s12" style="margin: 0;">
             <label for="">Pesquisar por Producto / Serviço...</label>
+            <input type="text" class="pesquisar" />
             <ul class="collection collection-pesquisar">
               <!-- Autocomplete Aqui -->
             </ul>
           </div>
         </div>
 
-        <!-- <div class="row">
-          <div class="col s12">
-            <ul class="collection caixa">
-              <li class="collection-header"><h4>Caixa</h4></li>
-                          </ul>
-          </div>
-        </div> -->
+       
 
         <div class="row">
           <div class="col s8">
@@ -90,26 +96,26 @@
           <div class="col s4">
             <table>
               <tr>
-                <th>Valor de Venda</th>
-                <td></td>
+                <th>Valor Total da Venda</th>
+                <td >
+                  <input type="number" name="valorTotal" id="valorTotal" readonly>
+                </td>
               </tr>
               <tr>
                 <th>Desconto</th>
                 <td></td>
               </tr>
-              <tr>
-                <th>IVA</th>
-                <td></td>
-              </tr>
+              
               <tr>
                 <th>Valor Pago</th>
-                <td><input type="text" name="" id="" style="border: none;"></td>
+                <td><input type="number" name="valorPago" id="valorPago" value="0.00" style="border: 1px solid rgb(207, 206, 206);"></td>
               </tr>
               <tr>
-                <th>Chk</th>
+                <th>Subtotal</th>
                 <td></td>
               </tr>
             </table>
+
           </div>
         </div>
         <%- include('../partials/buttons.ejs') %>    
