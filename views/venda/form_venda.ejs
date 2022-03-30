@@ -14,7 +14,7 @@
       <form action="/vendas" method="post" class="col s12">
         <div class="row">
           <div class="input-field col s12">
-            <select name="staff" id="staff">
+            <select name="staff" id="staff" required>
               <% if (staffs.length > 0){%>
               <option value="" disabled selected>
                 Selecione o Funcionario
@@ -31,7 +31,7 @@
 
         <div class="row">
           <div class="input-field col s12">
-            <select name="cliente" id="cliente">
+            <select name="cliente" id="cliente" required>
               <% if (clientes.length > 0){%>
               <option value="" disabled selected>Selecione o Cliente</option>
               <% clientes.forEach(cliente=>{ %>
@@ -47,7 +47,7 @@
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <select name="tipoPagamento" id="tipoPagamento">
+            <select name="tipoPagamento" id="tipoPagamento" required>
               <option value="" disabled selected>Selecine o tipo de pagamento</option>
               <option value="Prazo">A Prazo</option>
               <option value="Vista">A Vista</option>
@@ -56,7 +56,7 @@
           </div>
           <div class="input-field col s6">
             <input type="number" name="parcela" id="parcela">
-            <label for="parcela">Tipo de Pagamento</label>
+            <label for="parcela">Parcela</label>
           </div>
         </div>
 

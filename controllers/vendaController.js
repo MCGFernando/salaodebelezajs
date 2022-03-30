@@ -52,6 +52,36 @@ const venda_list = (req, res) =>{
     res.render('404')
   })
 }
+
+const venda_list_id = (req, res) =>{
+  const id = req.params.id;
+  Venda.findById(id).populate({
+    path:'staff',
+    populate:{
+      path:'conta',
+      model:'Conta'
+    }
+  }).populate({
+    path:'cliente',
+    populate:{
+      path:'conta',
+      model:'Conta'
+    }
+  }).populate({
+    path:'itemVenda',
+    populate:{
+      path:'productoServico',
+      model:'ProductoServico'
+    }
+  })
+  .then(result =>{
+    //res.send(result)
+    res.render('venda/venda_details',{venda : result})
+  }).catch(err=>{
+    console.log(err)
+    res.render('404')
+  })
+}
 const venda_create = (req, res) =>{
   console.log(req.body)
   const pagamento = {
@@ -70,6 +100,9 @@ const venda_create = (req, res) =>{
   const venda = new Venda({
     staff,
     cliente,
+    parcela: req.body.parcela,
+    valorTotalVenda: req.body.valorTotalVenda,
+    tipoPagamento: req.body.tipoPagamento,
     itemVenda,
     pagamento
   })
@@ -84,5 +117,6 @@ const venda_create = (req, res) =>{
 module.exports = {
     venda_new,
     venda_create,
-    venda_list
+    venda_list,
+    venda_list_id
 }

@@ -1,0 +1,92 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <%- include('../partials/head.ejs') %>
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('../partials/sidebar.ejs') %> <%-
+    include('../partials/header.ejs') %>
+    <h2>Cosulta de Vendas</h2>
+    <div class="row">
+      <div class="input-field col s12">
+        <label for="">Cliente</label>
+        <input type="text" value="<%=venda.cliente.conta.nome%>" readonly />
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <label for="">Tipo Pagamento</label>
+        <input type="text" value="<%=venda.tipoPagamento%>" readonly />
+      </div>
+      <div class="input-field col s6">
+        <label for="">Parcelas</label>
+        <input type="text" value="<%=venda.parcela%>" readonly />
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <label for="">Valor Venda</label>
+        <input type="text" value="<%=venda.valorTotalVenda%>" readonly />
+      </div>
+      <div class="input-field col s6">
+        <label for="">Valor Pago</label>
+        <input type="text" value="" readonly />
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <label for="">Saldo</label>
+        <input type="text" value="" readonly />
+      </div>
+      <div class="input-field col s6">
+        <label for="">Estado</label>
+        <input type="text" value="<%=venda.estado%>" readonly />
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Producto / Serviço</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+          <th>Valor Total</th>
+          <th>Data Venda</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if (venda.itemVenda.length > 0) {%> <%venda.itemVenda.forEach(item => {%>
+        <tr>
+          <td><%=item.productoServico._id%></td>
+          <td><%=item.productoServico.productoServico%></td>
+          <td><%=item.productoServico.valorVenda%></td>
+          <td><%=item.quantidade%></td>
+          <td></td>
+          <td><%=venda.createdAt%></td>
+          <td>
+            <a
+              class="dropdown-trigger btn-flat #eeeeee grey lighten-3"
+              href="#"
+              data-target="dropdown1"
+              ><i class="material-icons">more_vert</i></a
+            >
+            <ul id="dropdown1" class="dropdown-content">
+              <li><a href="#!">Ver</a></li>
+            </ul>
+          </td>
+        </tr>
+        <% }) %> <% } else { %>
+        <tr>
+          <td colspan="8">Sem Productos / Serviços para mostrar</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
