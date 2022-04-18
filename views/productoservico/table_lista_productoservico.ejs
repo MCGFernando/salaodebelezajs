@@ -18,7 +18,8 @@
     <table>
       <thead>
         <tr>
-            <th>ID</th>
+            
+            <th>IMG</th>
             <th>Producto / Serviço</th>
             <th>Descrição</th>
             <th>Sequencia</th>
@@ -34,7 +35,8 @@
         <% if (productoservicos.length > 0) {%>
           <%productoservicos.forEach(productoservico => {%>
         <tr>
-          <td><%=productoservico._id%></td>
+          <td style="display: none;"><%=productoservico._id%></td>
+          <td><img class="circle" src="1.jpg" style="width: 75px; height: 75px;"></td>
           <td><%=productoservico.productoServico%></td>
           <td><%=productoservico.descricao%></td>
           <td><%=productoservico.categoria.sequencia%></td>
